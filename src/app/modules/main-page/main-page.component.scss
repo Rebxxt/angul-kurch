@@ -11,4 +11,13 @@
       font-weight: bold;
     }
   }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__rating {
+
+  }
 }

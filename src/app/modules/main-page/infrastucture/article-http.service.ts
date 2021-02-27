@@ -21,4 +21,8 @@ export class ArticleHttpService {
   public deleteArticle(body): Observable<any> {
     return this.http.delete(environment.URLs.articles, body);
   }
+
+  public likeArticle(body): Observable<any> {
+    return this.http.put(environment.URLs.articleRating, body);
+  }
 }

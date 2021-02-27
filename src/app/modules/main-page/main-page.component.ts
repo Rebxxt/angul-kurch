@@ -43,4 +43,16 @@ export class MainPageComponent implements OnInit {
   private initArticles(): void {
     this.getArticles();
   }
+
+  public likeArticle(authorId: number): void {
+    this.articleHttp.likeArticle({ authorId, count: 1 }).subscribe(result => {
+      console.log('result like', result);
+    });
+  }
+
+  public dislikeArticle(authorId: number): void {
+    this.articleHttp.likeArticle({ authorId, count: -1 }).subscribe(result => {
+      console.log('result dislike', result);
+    });
+  }
 }

@@ -4,10 +4,14 @@ import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {MainPageComponent} from './main-page.component';
 import {ArticleHttpService} from './infrastucture/article-http.service';
+import {RatingColorDirective} from '../../infrastructure/directives/rating-color.directive';
+import { ArticleCardComponent } from './components/article-card/article-card.component';
 
 @NgModule({
   declarations: [
     MainPageComponent,
+    RatingColorDirective,
+    ArticleCardComponent
   ],
   imports: [
     CommonModule,
