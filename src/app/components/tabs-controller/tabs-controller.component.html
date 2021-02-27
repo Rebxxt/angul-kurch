@@ -1,0 +1,25 @@
+<div
+  class="form-group"
+  [style.background]="backgroundColor"
+>
+  <div
+    class="form-group__tabs"
+  >
+    <div
+      class="form-group__tab"
+      *ngFor="let i of tabs"
+      [class.active-tab]="i == activeTab"
+      [ngStyle]="{ background: i == activeTab ? tabActiveColor : tabColor,
+       color: i == activeTab ? tabActiveTextColor : tabTextColor }"
+    >
+      <div
+        class="form-group__tab-button"
+        (click)="setComponent(i)"
+      ><span>{{i.title}}</span></div>
+    </div>
+  </div>
+
+  <div class="form-group__container">
+    <ng-container #dialogView></ng-container>
+  </div>
+</div>

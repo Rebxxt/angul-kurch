@@ -1,0 +1,44 @@
+.block {
+  .forms {
+    padding: 15px;
+
+    input {
+      font-size: 14px;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-bottom: 15px;
+      outline: none;
+      padding: 6px 10px;
+      transition: 0.2s;
+
+      &:focus {
+        border: 1px solid #999;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .footer {
+    padding: 0 15px 20px 15px;
+    text-align: center;
+
+    button {
+      border: none;
+      font-weight: bold;
+      font-size: 14px;
+      padding: 10px 30px;
+      background: #22223b;
+      border-radius: 3px;
+      color: white;
+      transition: 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        background: #4e4e73;
+      }
+    }
+  }
+}
