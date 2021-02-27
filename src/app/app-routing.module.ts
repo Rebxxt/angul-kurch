@@ -2,6 +2,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AccountsComponent} from './modules/accounts/accounts.component';
 import {NgModule} from '@angular/core';
 import {MainPageComponent} from './modules/main-page/main-page.component';
+import {SectionPageComponent} from './modules/section-page/section-page.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountsComponent,
+  },
+  {
+    path: 'sections',
+    component: SectionPageComponent,
   }
 ];
 
