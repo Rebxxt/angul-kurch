@@ -1,0 +1,14 @@
+<div
+  class="articles__card"
+  *ngFor="let article of articles"
+>
+  <h3>{{article.title}}</h3>
+  <p>{{article.content}}</p>
+
+  <div class="articles__block">
+    <div class="articles__rating">
+      <h4 appRatingColor>{{article.rating}}</h4>
+    </div>
+    <p>{{article.dateCreated | date : 'shortDate'}}</p>
+  </div>
+</div>

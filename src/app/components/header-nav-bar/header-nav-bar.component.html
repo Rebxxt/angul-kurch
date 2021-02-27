@@ -1,0 +1,22 @@
+<div class="header">
+  <a class="header-logo" routerLink="/"
+  >habr</a>
+
+  <div class="header__nav-bar">
+    <nav>
+      <a
+        class="header__link"
+      >Разделы</a>
+      <a
+        class="header__link"
+        routerLink="/account"
+        *ngIf="currentAccount?.id !== undefined"
+      >Мой аккаунт</a>
+      <button
+        class="header__link"
+        routerLink="/auth"
+        *ngIf="currentAccount?.id === undefined"
+      >Войти</button>
+    </nav>
+  </div>
+</div>

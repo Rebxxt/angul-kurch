@@ -6,12 +6,14 @@ import {MainPageComponent} from './main-page.component';
 import {ArticleHttpService} from './infrastucture/article-http.service';
 import {RatingColorDirective} from '../../infrastructure/directives/rating-color.directive';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
+import { ArticlePageComponent } from './components/article-page/article-page.component';
 
 @NgModule({
   declarations: [
     MainPageComponent,
     RatingColorDirective,
-    ArticleCardComponent
+    ArticleCardComponent,
+    ArticlePageComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,3 @@
-<a routerLink="account">go to account</a>
-
-<p>main-page works!</p>
-
 <button (click)="getArticles()">get articles</button>
 <button (click)="addArticle()">add article</button>
 
@@ -9,18 +5,5 @@
   class="articles__content"
   *ngIf="articles.length !== 0"
 >
-  <div
-    class="articles__card"
-    *ngFor="let article of articles"
-  >
-    <h3>{{article.title}}</h3>
-    <p>{{article.content}}</p>
-
-    <div class="articles__block">
-      <div class="articles__rating">
-        <h4 appRatingColor>{{article.rating}}</h4>
-      </div>
-      <p>{{article.dateCreated | date : 'shortDate'}}</p>
-    </div>
-  </div>
+  <app-article-card [articles]="articles"></app-article-card>
 </div>
