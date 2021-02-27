@@ -1,3 +1,7 @@
+* {
+  font-family: sans-serif;
+}
+
 a,
 a:visited,
 a:active {
@@ -11,4 +15,12 @@ a:link {
   padding-top: 80px;
   width: 70%;
   margin: auto;
+}
+
+li {
+  list-style-type: none;
+}
+ul {
+  margin-left: 0;
+  padding-left: 0;
 }

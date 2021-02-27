@@ -23,6 +23,25 @@
   &__link {
     margin-right: 35px;
   }
+
+  &__nav-bar {
+    .button {
+      background: rgb(248, 248, 248);
+      color: rgb(1, 1, 1);
+      font-size: 18px;
+      padding: 7px 16px;
+      border-width: 0;
+      border-radius: 2px;
+      box-shadow: none;
+      transition: 0.2s;
+
+      &:hover {
+        background: rgb(202, 202, 202);
+        cursor: pointer;
+      }
+    }
+
+  }
 }
 
 a,

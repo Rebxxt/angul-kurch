@@ -1,2 +1,23 @@
-<p>accounts works!</p>
+<div class="account-header">
+  <div
+    class="account-header__pic"
+    [class.my-account]="true"
+  >
+    <div class="account__pic account__no-pic">
+      <h1>
+        В
+      </h1>
+    </div>
+  </div>
 
+  <div class="account-header__info">
+    <ul>
+      <li>{{'name'}}</li>
+      <li>ВАШ РЕЙТИНГ 5.0</li>
+    </ul>
+  </div>
+</div>
+
+<div class="account-tabs">
+  <button (click)="accountService.getCurrentAccount()">temp</button>
+</div>

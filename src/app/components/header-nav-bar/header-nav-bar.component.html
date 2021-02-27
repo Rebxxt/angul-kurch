@@ -10,14 +10,14 @@
       >Разделы</a>
       <a
         class="header__link"
-        routerLink="/account"
-        *ngIf="currentAccount?.id !== undefined"
+        [routerLink]="'/account/' + currentAccount?.id"
+        *ngIf="currentAccount?.id != undefined"
       >Мой аккаунт</a>
       <button
-        class="header__link"
+        class="header__link button"
         routerLink="/auth"
-        *ngIf="currentAccount?.id === undefined"
-      >Войти</button>
+        *ngIf="currentAccount?.id == undefined"
+      >Авторизация</button>
     </nav>
   </div>
 </div>

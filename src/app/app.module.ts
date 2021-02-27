@@ -7,12 +7,14 @@ import {AccountModule} from './modules/accounts/account.module';
 import {MainPageModule} from './modules/main-page/main-page.module';
 import { HeaderNavBarComponent } from './components/header-nav-bar/header-nav-bar.component';
 import { SectionPageComponent } from './modules/section-page/section-page.component';
+import { AuthComponent } from './modules/auth/auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderNavBarComponent,
     SectionPageComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
