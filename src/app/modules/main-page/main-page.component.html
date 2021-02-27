@@ -1,0 +1,19 @@
+<a routerLink="account">go to account</a>
+
+<p>main-page works!</p>
+
+<button (click)="getArticles()">get articles</button>
+<button (click)="addArticle()">add article</button>
+
+<div
+  class="articles__content"
+  *ngIf="articles.length !== 0"
+>
+  <div
+    class="articles__card"
+    *ngFor="let article of articles"
+  >
+    <h3>{{article.title}}</h3>
+    <span>{{article.authorId}}</span>
+  </div>
+</div>
