@@ -32,6 +32,10 @@
       <p class="control-error__message" *ngIf="formGroup.controls.lastName?.errors?.required">
         Необходимо заполнить поле
       </p>
+
+      <p class="control-error__message" *ngIf="formGroup.controls.lastName?.errors?.pattern">
+        Фамилия имеет неверный формат
+      </p>
     </div>
 
     <input
