@@ -15,6 +15,10 @@
       <p class="control-error__message" *ngIf="formGroup.controls.firstName?.errors?.required">
         Необходимо заполнить поле
       </p>
+
+      <p class="control-error__message" *ngIf="formGroup.controls.firstName?.errors?.pattern">
+        Имя имеет неверный формат
+      </p>
     </div>
 
     <input

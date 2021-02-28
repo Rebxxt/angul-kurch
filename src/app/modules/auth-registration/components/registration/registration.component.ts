@@ -11,8 +11,8 @@ import {RepeatControlValidator} from '../../infrastructure/validators/repeat-con
 export class RegistrationComponent implements OnInit {
 
   public formGroup: FormGroup = new FormGroup({
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', [Validators.required, Validators.pattern('^[A-ZА-Я][a-zа-я]*$')]),
+    lastName: new FormControl('', [Validators.required, Validators.pattern('^[A-ZА-Я][a-zа-я]*$')]),
     login: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     passwordRepeat: new FormControl('', [Validators.required]),
