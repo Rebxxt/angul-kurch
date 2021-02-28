@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../infrastructure/services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Auth} from '../../../../types/auth';
 
 @Component({
   selector: 'app-auth',
@@ -23,6 +24,6 @@ export class AuthComponent implements OnInit {
   }
 
   public tryAuth(): void {
-    this.authService.auth();
+    this.authService.auth(this.formGroup.value as Auth);
   }
 }
