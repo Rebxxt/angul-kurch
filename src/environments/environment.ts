@@ -3,7 +3,8 @@ export const environment = {
   URLs: {
     articles: 'api/articles',
     articleRating: 'api/articles/rating',
-    account: 'api/account'
+    account: 'api/account',
+    auth: 'api/auth',
 
   }
 };

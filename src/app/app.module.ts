@@ -10,6 +10,7 @@ import { SectionPageComponent } from './modules/section-page/section-page.compon
 import {AuthRegistrationModule} from './modules/auth-registration/auth-registration.module';
 import {TabsControllerModule} from './components/tabs-controller/tabs-controller.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import {NotificationModule} from './components/notification/notification.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     AuthRegistrationModule,
     TabsControllerModule,
     ReactiveFormsModule,
+    NotificationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

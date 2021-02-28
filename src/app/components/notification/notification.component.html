@@ -1,0 +1,8 @@
+<div
+  class="notification"
+  *ngIf="notify != null"
+  [ngClass]="notify.type"
+>
+  <h3>{{notify.type | convertType}}</h3>
+  <p>{{notify.message}}</p>
+</div>

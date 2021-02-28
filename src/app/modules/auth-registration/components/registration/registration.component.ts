@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../infrastructure/services/auth.service';
+import {AuthHttpService} from '../../infrastructure/services/auth-http.service';
 import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {RepeatControlValidator} from '../../infrastructure/validators/repeat-control.validator';
+import {Registration} from '../../infrastructure/types/registration';
 
 @Component({
   selector: 'app-registration',
@@ -21,7 +22,7 @@ export class RegistrationComponent implements OnInit {
   });
 
   constructor(
-    private readonly authService: AuthService,
+    private readonly authService: AuthHttpService,
   ) {
   }
 
@@ -29,6 +30,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   public tryRegistration(): void {
-    console.log('registration', this.formGroup.value)
+    this.authService.registration(this.formGroup.value as Registration);
   }
 }
