@@ -32,6 +32,8 @@ export class AuthComponent implements OnInit {
       if (!result) {
         this.notificationService.notify('Неверный логин/пароль', 'error');
       }
+    }, err => {
+      console.log(err)
     });
   }
 }

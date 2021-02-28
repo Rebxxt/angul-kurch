@@ -11,6 +11,8 @@ import {AuthRegistrationModule} from './modules/auth-registration/auth-registrat
 import {TabsControllerModule} from './components/tabs-controller/tabs-controller.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NotificationModule} from './components/notification/notification.module';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpHandlerInterceptor} from './infrastructure/interceptors/http-handler.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,13 @@ import {NotificationModule} from './components/notification/notification.module'
     ReactiveFormsModule,
     NotificationModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpHandlerInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

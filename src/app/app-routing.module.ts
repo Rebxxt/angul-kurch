@@ -9,6 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: MainPageComponent,
+
   },
   {
     path: 'account/:id',
