@@ -79,10 +79,18 @@
       <p class="control-error__message" *ngIf="formGroup.controls.passwordRepeat?.errors?.required">
         Необходимо заполнить поле
       </p>
+
+      <p class="control-error__message" *ngIf="formGroup.controls.passwordRepeat?.errors?.repeat">
+        Пароли не совпадают
+      </p>
     </div>
 
   </div>
   <div class="footer">
-    <button type="submit">Регистрация</button>
+    <button
+      type="submit"
+      [disabled]="formGroup.invalid"
+      [class.btn-disabled]="formGroup.invalid"
+    >Регистрация</button>
   </div>
 </form>

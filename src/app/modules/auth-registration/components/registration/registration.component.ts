@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../infrastructure/services/auth.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {RepeatControlValidator} from '../../infrastructure/validators/repeat-control.validator';
 
 @Component({
@@ -10,12 +10,14 @@ import {RepeatControlValidator} from '../../infrastructure/validators/repeat-con
 })
 export class RegistrationComponent implements OnInit {
 
+  public passwordControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
+
   public formGroup: FormGroup = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.pattern('^[A-ZА-Я][a-zа-я]*$')]),
     lastName: new FormControl('', [Validators.required, Validators.pattern('^[A-ZА-Я][a-zа-я]*$')]),
     login: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    passwordRepeat: new FormControl('', [Validators.required]),
+    password: this.passwordControl,
+    passwordRepeat: new FormControl('', [Validators.required, RepeatControlValidator.repeat(this.passwordControl)]),
   });
 
   constructor(
@@ -27,6 +29,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   public tryRegistration(): void {
-
+    console.log('registration', this.formGroup.value)
   }
 }

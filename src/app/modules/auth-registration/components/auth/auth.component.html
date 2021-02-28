@@ -39,6 +39,10 @@
 
   </div>
   <div class="footer">
-    <button type="submit">Вход</button>
+    <button
+      type="submit"
+      [disabled]="formGroup.invalid"
+      [class.btn-disabled]="formGroup.invalid"
+    >Вход</button>
   </div>
 </form>
