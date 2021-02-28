@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../infrastructure/services/auth.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {RepeatControlValidator} from '../../infrastructure/validators/repeat-control.validator';
 
 @Component({
   selector: 'app-registration',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  public formGroup: FormGroup = new FormGroup({
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    login: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    passwordRepeat: new FormControl('', [Validators.required]),
+  });
 
-  ngOnInit(): void {
+  constructor(
+    private readonly authService: AuthService,
+  ) {
   }
 
+  public ngOnInit(): void {
+  }
+
+  public tryRegistration(): void {
+
+  }
 }

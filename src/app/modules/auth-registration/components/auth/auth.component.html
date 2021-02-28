@@ -1,7 +1,42 @@
-<form (submit)="tryAuth()" class="block">
+<form
+  class="block"
+  (submit)="tryAuth()"
+  [formGroup]="formGroup"
+>
   <div class="forms">
-    <input type="text" placeholder="Логин...">
-    <input type="password" placeholder="Пароль...">
+    <input
+      type="text"
+      placeholder="Логин..."
+      formControlName="login"
+      [class.form-error]="formGroup.controls.login.touched && formGroup.controls.login.invalid"
+    >
+
+    <div class="control-error" *ngIf="formGroup.controls.login.touched">
+      <p class="control-error__message" *ngIf="formGroup.controls.login?.errors?.required">
+        Необходимо заполнить поле
+      </p>
+      <p class="control-error__message" *ngIf="formGroup.controls.login?.errors?.email">
+        Неверный email
+      </p>
+    </div>
+
+    <input
+      type="password"
+      placeholder="Пароль..."
+      name="password"
+      formControlName="password"
+      [class.form-error]="formGroup.controls.password.touched && formGroup.controls.password.invalid"
+    >
+
+    <div class="control-error" *ngIf="formGroup.controls.password.touched">
+      <p class="control-error__message" *ngIf="formGroup.controls.password?.errors?.required">
+        Необходимо заполнить поле
+      </p>
+      <p class="control-error__message" *ngIf="formGroup.controls.password?.errors?.minlength">
+        Длина пароля должна быть больше {{formGroup.controls.password?.errors?.minlength.requiredLength}} (текущий пароль - {{formGroup.controls.password?.errors?.minlength.actualLength}})
+      </p>
+    </div>
+
   </div>
   <div class="footer">
     <button type="submit">Вход</button>

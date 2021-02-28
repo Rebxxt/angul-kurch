@@ -9,7 +9,8 @@
       box-sizing: border-box;
       border: 1px solid #ccc;
       border-radius: 3px;
-      margin-bottom: 15px;
+      margin-top: 20px;
+      margin-bottom: 5px;
       outline: none;
       padding: 6px 10px;
       transition: 0.2s;
@@ -41,4 +42,17 @@
       }
     }
   }
+}
+
+.control-error {
+  &__message {
+    position: absolute;
+    margin: 0;
+    color: red;
+    font-size: 10px;
+  }
+}
+
+.form-error {
+  border: 1px solid red !important;
 }

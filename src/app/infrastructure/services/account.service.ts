@@ -30,10 +30,6 @@ export class AccountService {
     });
   }
 
-  private checkToken(): boolean {
-    return true;
-  }
-
   private generateTempAccount(): Account {
     const account = new Account();
     account.firstname = 'FirstName';
@@ -42,6 +38,10 @@ export class AccountService {
     account.login = 'tempGeneratedUser@gmail.com';
 
     return account;
+  }
+
+  private checkToken(): boolean {
+    return true;
   }
 
   private initEvents(): void {
