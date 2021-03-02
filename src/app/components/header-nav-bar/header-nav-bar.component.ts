@@ -20,7 +20,7 @@ export class HeaderNavBarComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.subs.add(
-      this.accountService.currentAccount.subscribe(account => this.currentAccount = account)
+      this.accountService.authUser.subscribe(account => this.currentAccount = account)
     );
   }
 

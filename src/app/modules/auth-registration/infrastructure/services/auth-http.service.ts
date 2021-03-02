@@ -4,6 +4,7 @@ import {Registration} from '../types/registration';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 import {Observable} from 'rxjs';
+import {Account} from '../../../../types/account';
 
 @Injectable()
 export class AuthHttpService {
@@ -17,7 +18,7 @@ export class AuthHttpService {
     return this.http.get(environment.URLs.auth, { params }) as Observable<Account>;
   }
 
-  public registration(regForm: Registration): void {
-    console.log('reg', regForm)
+  public registration(regForm: Registration): Observable<Account> {
+    return this.http.post(environment.URLs.auth, regForm) as Observable<Account>;
   }
 }

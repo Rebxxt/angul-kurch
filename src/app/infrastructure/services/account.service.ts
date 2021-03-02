@@ -10,47 +10,53 @@ import {environment} from '../../../environments/environment';
 })
 export class AccountService {
 
-  private _currentAccount: ReplaySubject<Account> = new ReplaySubject<Account>(1);
-  public get currentAccount(): Observable<Account> {
-    return this._currentAccount.asObservable();
+  private _authUser: ReplaySubject<Account> = new ReplaySubject<Account>(1);
+  public get authUser(): Observable<Account> {
+    return this._authUser.asObservable();
   }
 
   constructor(
     private readonly http: HttpClient,
     private readonly router: Router,
   ) {
-    // this._currentAccount.next(this.generateTempAccount());
     this.initEvents();
+    if (localStorage.getItem('token')) {
+      this.getUserByToken();
+    }
   }
 
-  public getCurrentAccount(): void {
+  public getAuthUser(): void {
     const params: HttpParams = new HttpParams().append('id', '0');
     this.http.get(environment.URLs.account, { params }).subscribe(result => {
       console.log('RESULT', result)
     });
   }
 
-  private generateTempAccount(): Account {
-    const account = new Account();
-    account.firstname = 'FirstName';
-    account.lastname = 'SecondName';
-    account.id = 0;
-    account.login = 'tempGeneratedUser@gmail.com';
-
-    return account;
+  public setAuthUser(value: Account): void {
+    this._authUser.next(value);
   }
 
-  private checkToken(): boolean {
-    return true;
+  private async checkToken(): Promise<boolean> {
+    const params: HttpParams = new HttpParams().append('token', localStorage.getItem('token'));
+    return await this.http.get(environment.URLs.token, { params }).toPromise().then(el => {
+      return !!el;
+    });
+  }
+
+  private getUserByToken(): void {
+    const params: HttpParams = new HttpParams().append('token', localStorage.getItem('token'));
+    this.http.get(environment.URLs.token, { params }).subscribe((user: Account) => {
+      this._authUser.next(user);
+    });
   }
 
   private initEvents(): void {
-    this.router.events.subscribe(e => {
+    this.router.events.subscribe(async e => {
       if (e instanceof NavigationStart) {
-        if (this.checkToken()) {
-          // TODO сделать проверку актуальности токена
-          console.log('CHECK AUTH');
-        }
+        console.log('CHECK AUTH');
+        // if (await this.checkToken()) {
+        //   // TODO сделать проверку актуальности токена
+        // }
       }
     });
   }

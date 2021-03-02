@@ -5,6 +5,7 @@ export const environment = {
     articleRating: 'api/articles/rating',
     account: 'api/account',
     auth: 'api/auth',
+    token: 'api/token',
 
   }
 };

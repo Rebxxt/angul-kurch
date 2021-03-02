@@ -1,3 +1,10 @@
+<div
+  class="page"
+  *ngIf="currentAccountId"
+>
+
+</div>
+
 <div class="account-header">
   <div
     class="account-header__pic"
@@ -19,5 +26,5 @@
 </div>
 
 <div class="account-tabs">
-  <button (click)="accountService.getCurrentAccount()">temp</button>
+  <button (click)="accountService.getAuthUser()">temp</button>
 </div>

@@ -4,4 +4,5 @@ export class Account {
   login: string;
   id: number;
   companyId: string;
+  token?: string;
 }
