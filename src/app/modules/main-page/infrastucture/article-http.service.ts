@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
+import {delay, retryWhen, take} from 'rxjs/operators';
 
 @Injectable()
 export class ArticleHttpService {
@@ -11,7 +12,7 @@ export class ArticleHttpService {
   }
 
   public getArticles(): Observable<any> {
-    return this.http.get(environment.URLs.articles);
+    return this.http.get(environment.URLs.articles).pipe(retryWhen(errors => errors.pipe(delay(1000), take(10))));
   }
 
   public addArticle(body): Observable<any> {

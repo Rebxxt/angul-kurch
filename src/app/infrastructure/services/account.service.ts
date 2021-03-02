@@ -4,6 +4,7 @@ import {Account} from '../../types/account';
 import {Observable, ReplaySubject} from 'rxjs';
 import {NavigationStart, Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
+import {delay, retryWhen, take} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -45,9 +46,10 @@ export class AccountService {
 
   private getUserByToken(): void {
     const params: HttpParams = new HttpParams().append('token', localStorage.getItem('token'));
-    this.http.get(environment.URLs.token, { params }).subscribe((user: Account) => {
-      this._authUser.next(user);
-    });
+    this.http.get(environment.URLs.token, { params }).pipe(retryWhen(errors => errors.pipe(delay(1000), take(10))))
+      .subscribe((user: Account) => {
+        this._authUser.next(user);
+      });
   }
 
   private initEvents(): void {
