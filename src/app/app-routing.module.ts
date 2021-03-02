@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {MainPageComponent} from './modules/main-page/main-page.component';
 import {SectionPageComponent} from './modules/section-page/section-page.component';
 import {AuthRegistrationComponent} from './modules/auth-registration/auth-registration.component';
+import {ArticlesComponent} from './modules/articles/articles.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthRegistrationComponent,
+  },
+  {
+    path: 'article/:id',
+    component: ArticlesComponent,
   }
 ];
 

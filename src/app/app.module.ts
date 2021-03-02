@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {NotificationModule} from './components/notification/notification.module';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpHandlerInterceptor} from './infrastructure/interceptors/http-handler.interceptor';
+import {ArticlesModule} from './modules/articles/articles.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {HttpHandlerInterceptor} from './infrastructure/interceptors/http-handler
     TabsControllerModule,
     ReactiveFormsModule,
     NotificationModule,
+    ArticlesModule,
   ],
   providers: [
     {

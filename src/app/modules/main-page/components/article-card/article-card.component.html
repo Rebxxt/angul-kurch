@@ -2,13 +2,34 @@
   class="articles__card"
   *ngFor="let article of articles"
 >
-  <h3>{{article.title}}</h3>
-  <p>{{article.content}}</p>
-
-  <div class="articles__block">
-    <div class="articles__rating">
-      <h4 appRatingColor>{{article.rating}}</h4>
-    </div>
+  <hr>
+  <div class="card__header">
+    <p>{{article.author?.firstName}} {{article.author?.lastName}}</p>
     <p>{{article.dateCreated | date : 'shortDate'}}</p>
+  </div>
+
+  <a [routerLink]="'article/' + article.id">{{article.title}}</a>
+
+  <div class="card__tags">
+
+  </div>
+
+  <p>{{article.content}}</p>
+  <button
+    class="card__join"
+    [routerLink]="'article/' + article.id">Читать дальше</button>
+
+  <div class="card__info">
+    <div class="card__info-item">
+      <span>Рейтинг: <span appRatingColor>{{article.rating}}</span></span>
+    </div>
+    <span>&nbsp;|&nbsp;</span>
+    <div class="card__info-item">
+      <span>Зрителей: <span>{{article.viewers ? article.viewers : '0' }}</span> </span>
+    </div>
+    <span>&nbsp;|&nbsp;</span>
+    <div class="card__info-item">
+      <span>Комментариев: <span>{{article.comments ? article.comments : '0'}}</span> </span>
+    </div>
   </div>
 </div>
