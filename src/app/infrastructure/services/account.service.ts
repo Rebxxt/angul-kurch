@@ -10,6 +10,7 @@ import {delay, retryWhen, take} from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AccountService {
+  public admin = false;
 
   private _authUser: ReplaySubject<Account> = new ReplaySubject<Account>(1);
   public get authUser(): Observable<Account> {
@@ -35,6 +36,14 @@ export class AccountService {
 
   public setAuthUser(value: Account): void {
     this._authUser.next(value);
+    if (value.login === 'admin@ad') {
+      this.admin = true;
+    }
+  }
+
+  public clearAuthUser(): void {
+    localStorage.removeItem('token');
+    this.setAuthUser(new Account());
   }
 
   private async checkToken(): Promise<boolean> {
@@ -55,7 +64,6 @@ export class AccountService {
   private initEvents(): void {
     this.router.events.subscribe(async e => {
       if (e instanceof NavigationStart) {
-        console.log('CHECK AUTH');
         // if (await this.checkToken()) {
         //   // TODO сделать проверку актуальности токена
         // }

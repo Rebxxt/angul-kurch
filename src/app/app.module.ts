@@ -14,6 +14,7 @@ import {NotificationModule} from './components/notification/notification.module'
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpHandlerInterceptor} from './infrastructure/interceptors/http-handler.interceptor';
 import {ArticlesModule} from './modules/articles/articles.module';
+import {ArticleCreaterModule} from './modules/article-creater/article-creater.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {ArticlesModule} from './modules/articles/articles.module';
     ReactiveFormsModule,
     NotificationModule,
     ArticlesModule,
+    ArticleCreaterModule,
   ],
   providers: [
     {

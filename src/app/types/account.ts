@@ -1,6 +1,6 @@
 export class Account {
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   login: string;
   id: number;
   companyId: string;

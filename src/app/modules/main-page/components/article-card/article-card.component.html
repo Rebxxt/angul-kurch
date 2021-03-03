@@ -4,7 +4,7 @@
 >
   <hr>
   <div class="card__header">
-    <p>{{article.author?.firstName}} {{article.author?.lastName}}</p>
+    <p>{{article.author?.firstname}} {{article.author?.lastname}}</p>
     <p>{{article.dateCreated | date : 'shortDate'}}</p>
   </div>
 
@@ -14,7 +14,7 @@
 
   </div>
 
-  <p>{{article.content}}</p>
+  <div [innerHTML]="article.content"></div>
   <button
     class="card__join"
     [routerLink]="'article/' + article.id">Читать дальше</button>
@@ -31,5 +31,8 @@
     <div class="card__info-item">
       <span>Комментариев: <span>{{article.comments ? article.comments : '0'}}</span> </span>
     </div>
+  </div>
+  <div class="card__admin" *ngIf="accountService.admin">
+    <button class="button button__red" (click)="deleteArticle(article.id)">Удалить статью</button>
   </div>
 </div>

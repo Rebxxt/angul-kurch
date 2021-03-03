@@ -17,7 +17,6 @@ export class NotificationService {
 
   public notify(message: string, type: typeof notifyTypes): void {
     this._show.next({ message, type });
-    console.log({ message, type })
     setTimeout(() => this._show.next(), 5000);
   }
 }

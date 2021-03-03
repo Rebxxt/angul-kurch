@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AccountService} from '../../infrastructure/services/account.service';
 import {Account} from '../../types/account';
 import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header-nav-bar',
@@ -11,16 +12,21 @@ import {Subscription} from 'rxjs';
 export class HeaderNavBarComponent implements OnInit, OnDestroy {
 
   public currentAccount: Account;
+  public currentAccountId: number;
 
   private readonly subs: Subscription = new Subscription();
 
   constructor(
     private readonly accountService: AccountService,
+    private readonly router: Router,
   ) { }
 
   public ngOnInit(): void {
     this.subs.add(
-      this.accountService.authUser.subscribe(account => this.currentAccount = account)
+      this.accountService.authUser.subscribe(account => {
+        this.currentAccountId = account.id;
+        this.currentAccount = account;
+      })
     );
   }
 
@@ -28,4 +34,8 @@ export class HeaderNavBarComponent implements OnInit, OnDestroy {
     this.subs.unsubscribe();
   }
 
+  public exitAuth(): void {
+    this.accountService.clearAuthUser();
+    this.router.navigate(['/auth']);
+  }
 }

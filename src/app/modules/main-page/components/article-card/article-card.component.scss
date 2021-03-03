@@ -32,7 +32,8 @@
 
     h4, p {
       display: inline-block;
-      margin-right: 20px;
+      margin: 0 20px 5px 0;
+      font-size: 12px;
     }
 
   }
@@ -70,4 +71,21 @@
       }
     }
   }
+}
+
+.card__admin {
+  margin-top: 15px;
+}
+
+.button {
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 5px 15px;
+}
+
+.button__red {
+  background: red;
+  color: white;
 }

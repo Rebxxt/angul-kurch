@@ -15,10 +15,6 @@ export class ArticleHttpService {
     return this.http.get(environment.URLs.articles).pipe(retryWhen(errors => errors.pipe(delay(1000), take(10))));
   }
 
-  public addArticle(body): Observable<any> {
-    return this.http.post(environment.URLs.articles, body);
-  }
-
   public deleteArticle(body): Observable<any> {
     return this.http.delete(environment.URLs.articles, body);
   }

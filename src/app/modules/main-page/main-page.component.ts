@@ -26,13 +26,6 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  public addArticle(): void {
-    const body = { title: 'tet', content: 'test', author_id: 0 };
-    this.articleHttp.addArticle(body).subscribe(result => {
-      console.log('POST RESULT', result);
-    });
-  }
-
   public deleteArticle(): void {
     const body = { id: 0 };
     this.articleHttp.deleteArticle(body).subscribe(result => {

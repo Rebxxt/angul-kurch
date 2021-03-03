@@ -10,13 +10,23 @@
       >Разделы</a>
       <a
         class="header__link"
-        [routerLink]="'/account/' + currentAccount?.id"
-        *ngIf="currentAccount?.id != undefined"
+        [routerLink]="'/article/create'"
+        *ngIf="currentAccountId != undefined"
+      >Создать статью</a>
+      <a
+        class="header__link"
+        [routerLink]="'/account/' + currentAccountId"
+        *ngIf="currentAccountId != undefined"
       >Мой аккаунт</a>
       <button
         class="header__link button"
+        (click)="exitAuth()"
+        *ngIf="currentAccountId != undefined"
+      >Выйти</button>
+      <button
+        class="header__link button"
         routerLink="/auth"
-        *ngIf="currentAccount?.id == undefined"
+        *ngIf="currentAccountId == undefined"
       >Авторизация</button>
     </nav>
   </div>

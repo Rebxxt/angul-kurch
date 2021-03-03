@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Article} from '../../../../types/article';
+import {AccountService} from '../../../../infrastructure/services/account.service';
 
 @Component({
   selector: 'app-article-card',
@@ -10,10 +11,14 @@ export class ArticleCardComponent implements OnInit {
 
   @Input('articles') articles: Article[];
 
-  constructor() { }
+  constructor(
+    public accountService: AccountService,
+  ) { }
 
   ngOnInit(): void {
-    console.log('init', this.articles)
   }
 
+  public deleteArticle(id): void {
+    console.log('delete', id)
+  }
 }

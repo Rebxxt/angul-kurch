@@ -1,0 +1,38 @@
+<h1 style="text-align: center">Написание статьи</h1>
+<div class="form">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+    <h3
+      [class.title-error]="formGroup.controls.title.invalid && formGroup.controls.title.touched"
+     >Заголовок для статьи:</h3>
+    <input
+      formControlName="title"
+      class="form__input"
+      type="text"
+      [class.control-error]="formGroup.controls.title.invalid && formGroup.controls.title.touched"
+    >
+
+    <h3
+      [class.title-error]="formGroup.controls.content.invalid && formGroup.controls.content.touched"
+    >Содержимое статьи:</h3>
+    <quill-editor
+      formControlName="content"
+    ></quill-editor>
+
+    <h1>здесь будут тэги</h1>
+    <div class="footer">
+      <div class="block">
+        <button
+          class="button-submit"
+          type="submit"
+          style="display: block"
+          [disabled]="!currentUser || formGroup.invalid"
+          [class.button-disabled]="!currentUser || formGroup.invalid"
+        >Отправить на модерацию</button>
+        <p class="text" style="margin: 5px 0 0 0; text-align: end;">Автор: {{currentName}}</p>
+      </div>
+    </div>
+  </form>
+
+<!--  TODO ДОБАВИТЬ РЕДАКТИРОВАНИЕ ТЭГОВ-->
+</div>

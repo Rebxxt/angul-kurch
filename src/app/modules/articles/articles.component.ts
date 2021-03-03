@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-articles',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly location: Location,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  public backRoute(): void {
+    this.location.back();
+  }
 }

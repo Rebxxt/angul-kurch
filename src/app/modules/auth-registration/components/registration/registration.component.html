@@ -7,16 +7,16 @@
     <input
       type="text"
       placeholder="Имя..."
-      formControlName="firstName"
-      [class.form-error]="formGroup.controls.firstName.touched && formGroup.controls.firstName.invalid"
+      formControlName="firstname"
+      [class.form-error]="formGroup.controls.firstname.touched && formGroup.controls.firstname.invalid"
     >
 
-    <div class="control-error" *ngIf="formGroup.controls.firstName.touched">
-      <p class="control-error__message" *ngIf="formGroup.controls.firstName?.errors?.required">
+    <div class="control-error" *ngIf="formGroup.controls.firstname.touched">
+      <p class="control-error__message" *ngIf="formGroup.controls.firstname?.errors?.required">
         Необходимо заполнить поле
       </p>
 
-      <p class="control-error__message" *ngIf="formGroup.controls.firstName?.errors?.pattern">
+      <p class="control-error__message" *ngIf="formGroup.controls.firstname?.errors?.pattern">
         Имя имеет неверный формат
       </p>
     </div>
@@ -24,16 +24,16 @@
     <input
       type="text"
       placeholder="Фамилия..."
-      formControlName="lastName"
-      [class.form-error]="formGroup.controls.lastName.touched && formGroup.controls.lastName.invalid"
+      formControlName="lastname"
+      [class.form-error]="formGroup.controls.lastname.touched && formGroup.controls.lastname.invalid"
     >
 
-    <div class="control-error" *ngIf="formGroup.controls.lastName.touched">
-      <p class="control-error__message" *ngIf="formGroup.controls.lastName?.errors?.required">
+    <div class="control-error" *ngIf="formGroup.controls.lastname.touched">
+      <p class="control-error__message" *ngIf="formGroup.controls.lastname?.errors?.required">
         Необходимо заполнить поле
       </p>
 
-      <p class="control-error__message" *ngIf="formGroup.controls.lastName?.errors?.pattern">
+      <p class="control-error__message" *ngIf="formGroup.controls.lastname?.errors?.pattern">
         Фамилия имеет неверный формат
       </p>
     </div>
