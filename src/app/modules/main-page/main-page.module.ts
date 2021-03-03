@@ -20,6 +20,9 @@ import { ArticlePageComponent } from './components/article-page/article-page.com
     RouterModule,
     HttpClientModule,
   ],
+  exports: [
+    RatingColorDirective
+  ],
   providers: [
     ArticleHttpService,
   ]

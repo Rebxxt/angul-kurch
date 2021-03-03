@@ -15,6 +15,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpHandlerInterceptor} from './infrastructure/interceptors/http-handler.interceptor';
 import {ArticlesModule} from './modules/articles/articles.module';
 import {ArticleCreaterModule} from './modules/article-creater/article-creater.module';
+import {QuillModule} from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {ArticleCreaterModule} from './modules/article-creater/article-creater.mo
     NotificationModule,
     ArticlesModule,
     ArticleCreaterModule,
+    QuillModule,
   ],
   providers: [
     {

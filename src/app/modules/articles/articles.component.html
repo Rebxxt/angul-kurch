@@ -1,11 +1,65 @@
 <p>articles works!</p>
-<button (click)="backRoute()">Вернуться назад</button>
+<button (click)="backRoute()" class="button">Вернуться назад</button>
 
 <div class="content" *ngIf="currentArticle">
+  <div class="header">
+    <p>{{currentArticle.author.firstname}} {{currentArticle.author.lastname}}</p>
+    <p appRatingColor>{{currentArticle.rating}}</p>
+    <p>{{currentArticle.dateCreated}}</p>
+  </div>
+
+  <div *ngIf="accountService.admin">
+    <hr>
+    <button (click)="editMode = !editMode" class="button">{{ editMode ? 'Закрыть редактирование' : 'Редактировать'}}</button>
+  </div>
+
+  <hr>
+
+  <div class="content__container" *ngIf="!editMode">
+    <h3>{{currentArticle.title}}</h3>
+
+    <div [innerHTML]="currentArticle.content"></div>
+  </div>
+
+  <div class="content__container" *ngIf="editMode">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <h3
+        [class.title-error]="form.controls.title.invalid && form.controls.title.touched"
+      >Заголовок для статьи:</h3>
+      <input
+        formControlName="title"
+        class="form__input"
+        type="text"
+        [class.control-error]="form.controls.title.invalid && form.controls.title.touched"
+      >
+
+      <h3
+        [class.title-error]="form.controls.content.invalid && form.controls.content.touched"
+      >Содержимое статьи:</h3>
+      <quill-editor
+        formControlName="content"
+      ></quill-editor>
+
+      <h1>здесь будут тэги</h1>
+      <div class="footer">
+        <div class="block">
+          <button
+            class="button-submit"
+            type="submit"
+            style="display: block"
+            [disabled]="!accountService.admin || form.invalid"
+            [class.button-disabled]="!accountService.admin || form.invalid"
+          >Сохранить</button>
+          <p class="text" style="margin: 5px 0 0 0; text-align: end;">Автор: {{currentArticle.author.firstname}} {{currentArticle.author.lastname}}</p>
+        </div>
+      </div>
+    </form>
+  </div>
 
 </div>
 
 
-<div class="empty" *ngIf="!currentArticle">
+<div class="empty" *ngIf="!currentArticle && load">
   <h1>404: Не найдена статья с таким id</h1>
 </div>
