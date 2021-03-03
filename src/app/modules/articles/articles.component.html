@@ -1,2 +1,11 @@
 <p>articles works!</p>
 <button (click)="backRoute()">Вернуться назад</button>
+
+<div class="content" *ngIf="currentArticle">
+
+</div>
+
+
+<div class="empty" *ngIf="!currentArticle">
+  <h1>404: Не найдена статья с таким id</h1>
+</div>
