@@ -26,13 +26,6 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  public deleteArticle(): void {
-    const body = { id: 0 };
-    this.articleHttp.deleteArticle(body).subscribe(result => {
-      console.log('DELETE RESULT', result);
-    });
-  }
-
   private initArticles(): void {
     this.getArticles();
   }

@@ -57,7 +57,7 @@ export class AccountService {
     const params: HttpParams = new HttpParams().append('token', localStorage.getItem('token'));
     this.http.get(environment.URLs.token, { params }).pipe(retryWhen(errors => errors.pipe(delay(1000), take(10))))
       .subscribe((user: Account) => {
-        this._authUser.next(user);
+        this.setAuthUser(user);
       });
   }
 

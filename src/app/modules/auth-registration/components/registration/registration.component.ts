@@ -52,9 +52,6 @@ export class RegistrationComponent implements OnInit {
       } else {
         localStorage.setItem('token', result.token);
         this.accountService.setAuthUser(this.formGroup.value as Account);
-        this.accountService.authUser.subscribe(el => {
-          console.log('AUTH USER', el)
-        })
         this.router.navigate(['/']);
       }
     }, err => {
