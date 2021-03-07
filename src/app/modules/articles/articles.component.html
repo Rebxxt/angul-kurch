@@ -1,11 +1,10 @@
-<p>articles works!</p>
-<button (click)="backRoute()" class="button">Вернуться назад</button>
+<button (click)="backRoute()" class="button upper-block">Вернуться назад</button>
 
 <div class="content" *ngIf="currentArticle">
   <div class="header">
     <p>{{currentArticle.author.firstname}} {{currentArticle.author.lastname}}</p>
     <p appRatingColor>{{currentArticle.rating}}</p>
-    <p>{{currentArticle.dateCreated}}</p>
+    <p>{{currentArticle.dateCreated | date}}</p>
   </div>
 
   <div *ngIf="accountService.admin">

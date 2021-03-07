@@ -10,4 +10,6 @@ export interface Article {
   viewers: number;
   comments: number;
   author?: Account;
+  moderate_apply?: boolean;
+  moderate_check?: boolean;
 }

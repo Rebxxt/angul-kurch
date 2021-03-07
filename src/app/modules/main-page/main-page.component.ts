@@ -22,7 +22,6 @@ export class MainPageComponent implements OnInit {
   public getArticles(): void {
     this.articleHttp.getArticles().subscribe(result => {
       this.articles = result;
-      console.log('GET RESULT', this.articles);
     });
   }
 

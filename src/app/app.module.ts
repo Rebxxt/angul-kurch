@@ -43,6 +43,8 @@ import {QuillModule} from 'ngx-quill';
       multi: true,
     },
   ],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

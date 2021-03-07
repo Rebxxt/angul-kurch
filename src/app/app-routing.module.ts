@@ -33,6 +33,10 @@ const routes: Routes = [
     path: 'article/:id',
     component: ArticlesComponent,
   },
+  {
+    path: 'moderate',
+    loadChildren: () => import('./modules/moderate/moderate.module').then(m => m.ModerateModule),
+  }
 ];
 
 @NgModule({

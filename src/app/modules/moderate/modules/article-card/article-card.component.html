@@ -1,0 +1,33 @@
+<button (click)="backRoute()" class="button upper-block button-back">Вернуться назад</button>
+
+<div class="content" *ngIf="currentArticle">
+  <div class="header">
+    <p>{{currentArticle.author.firstname}} {{currentArticle.author.lastname}}</p>
+    <p appRatingColor>{{currentArticle.rating}}</p>
+    <p>{{currentArticle.dateCreated | date}}</p>
+  </div>
+
+  <hr>
+
+  <div class="content__container">
+    <h3>{{currentArticle.title}}</h3>
+
+    <div [innerHTML]="currentArticle.content"></div>
+  </div>
+
+  <hr>
+
+  <div class="moderator-menu" *ngIf="!currentArticle.moderate_apply && !currentArticle.moderate_check">
+    <button class="button button-approve" (click)="approveArticle()">Принять публикацию</button>
+    <button class="button button-warn" (click)="warnArticle()">Закрыть публикацию</button>
+    <button class="button button-delete" (click)="deleteArticle()">Удалить публикацию</button>
+  </div>
+  <div *ngIf="currentArticle.moderate_check">
+    <h4 style="text-align: center">Ожидание исправлений</h4>
+  </div>
+</div>
+
+
+<div class="empty" *ngIf="!currentArticle && load">
+  <h1>404: Не найдена статья с таким id</h1>
+</div>

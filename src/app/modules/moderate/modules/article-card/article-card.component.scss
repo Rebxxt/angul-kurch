@@ -1,3 +1,7 @@
+.content {
+  margin-bottom: 50px;
+}
+
 .form {
   textarea {
     max-width: 100%;
@@ -68,8 +72,7 @@
   border-radius: 3px;
   font-weight: bold;
   font-size: 15px;
-  padding: 5px 15px;
-  background: #ffee9a;
+  padding: 10px 20px;
   transition: 0.3s;
 
   &:hover {
@@ -78,6 +81,34 @@
   }
 }
 
+.button-back {
+  background: #ffee9a;
+}
+.button-delete {
+  background: rgb(255, 59, 59);
+  color: white;
+
+  &:hover {
+    background: rgb(162, 37, 37);
+  }
+}
+.button-approve {
+  background: rgb(182, 255, 109);
+  color: black;
+
+  &:hover {
+    background: rgb(217, 255, 168);
+  }
+}
+.button-warn {
+  background: rgb(255, 137, 83);
+}
+
 .upper-block {
   margin-top: 20px;
+}
+
+.moderator-menu {
+  display: flex;
+  justify-content: space-between;
 }

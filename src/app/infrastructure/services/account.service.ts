@@ -22,7 +22,7 @@ export class AccountService {
     private readonly router: Router,
   ) {
     this.initEvents();
-    if (localStorage.getItem('token')) {
+    if (sessionStorage.getItem('token')) {
       this.getUserByToken();
     }
   }
@@ -30,7 +30,6 @@ export class AccountService {
   public getAuthUser(): void {
     const params: HttpParams = new HttpParams().append('id', '0');
     this.http.get(environment.URLs.account, { params }).subscribe(result => {
-      console.log('RESULT', result)
     });
   }
 
@@ -42,12 +41,12 @@ export class AccountService {
   }
 
   public clearAuthUser(): void {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
     this.setAuthUser(new Account());
   }
 
   public getUserByToken(): void {
-    const params: HttpParams = new HttpParams().append('token', localStorage.getItem('token'));
+    const params: HttpParams = new HttpParams().append('token', sessionStorage.getItem('token'));
     this.http.get(environment.URLs.token, { params }).pipe(retryWhen(errors => errors.pipe(delay(1000), take(10))))
       .subscribe((user: Account) => {
         this.setAuthUser(user);
@@ -55,7 +54,7 @@ export class AccountService {
   }
 
   private async checkToken(): Promise<boolean> {
-    const params: HttpParams = new HttpParams().append('token', localStorage.getItem('token'));
+    const params: HttpParams = new HttpParams().append('token', sessionStorage.getItem('token'));
     return await this.http.get(environment.URLs.token, { params }).toPromise().then(el => {
       return !!el;
     });

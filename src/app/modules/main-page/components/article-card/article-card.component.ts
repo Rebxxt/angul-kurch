@@ -23,10 +23,8 @@ export class ArticleCardComponent implements OnInit {
   }
 
   public deleteArticle(id): void {
-    console.log('delete', id)
     const body: HttpParams = new HttpParams().append('id', id);
     this.articleHttp.deleteArticle(body).subscribe(result => {
-      console.log('DELETE RESULT', result, this.articles, id);
       this.articles = this.articles.filter(article => article.id !== id);
     });
   }

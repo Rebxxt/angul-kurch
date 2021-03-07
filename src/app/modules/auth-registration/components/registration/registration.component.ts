@@ -50,7 +50,7 @@ export class RegistrationComponent implements OnInit {
       if (!result) {
         this.notificationService.notify('Пользователь с таким email уже существует', 'error');
       } else {
-        localStorage.setItem('token', result.token);
+        sessionStorage.setItem('token', result.token);
         this.accountService.getUserByToken();
         this.router.navigate(['/']);
       }

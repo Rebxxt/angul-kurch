@@ -1,3 +1,4 @@
+
 <div
   class="articles__card"
   *ngFor="let article of articles"
@@ -17,7 +18,7 @@
   <div [innerHTML]="article.content.substr(0, 300) + (article.content.length > 300 ? '...' : '')"></div>
   <button
     class="card__join"
-    [routerLink]="'article/' + article.id">Читать дальше</button>
+    [routerLink]="'/moderate/article/' + article.id">Открыть на модерацию</button>
 
   <div class="card__info">
     <div class="card__info-item">
@@ -31,8 +32,5 @@
     <div class="card__info-item">
       <span>Комментариев: <span>{{article.comments ? article.comments : '0'}}</span> </span>
     </div>
-  </div>
-  <div class="card__admin" appRolesAdmin>
-    <button class="button button__red" (click)="deleteArticle(article.id)">Удалить статью</button>
   </div>
 </div>

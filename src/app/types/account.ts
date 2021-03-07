@@ -1,3 +1,5 @@
+import { Roles } from '../modules/accounts/infrastructure/types/roles';
+
 export class Account {
   firstname: string;
   lastname: string;
@@ -5,4 +7,5 @@ export class Account {
   id: number;
   companyId: string;
   token?: string;
+  roles?: string[];
 }

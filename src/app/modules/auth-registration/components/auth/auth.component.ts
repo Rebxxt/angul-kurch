@@ -29,19 +29,18 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('token')) {
+    if (sessionStorage.getItem('token')) {
 
     }
   }
 
   public tryAuth(): void {
     this.authService.auth(this.formGroup.value as Auth).subscribe((result) => {
-      console.log(result);
       if (!result) {
         this.notificationService.notify('Неверный логин/пароль', 'error');
       } else {
         this.accountService.setAuthUser(result);
-        localStorage.setItem('token', result.token);
+        sessionStorage.setItem('token', result.token);
         this.router.navigate(['/']);
       }
     }, err => {

@@ -7,6 +7,7 @@ export const environment = {
     account: 'api/account',
     auth: 'api/auth',
     token: 'api/token',
+    articleStatus: 'api/articles/status',
 
   }
 };
