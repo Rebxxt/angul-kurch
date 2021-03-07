@@ -46,19 +46,19 @@ export class AccountService {
     this.setAuthUser(new Account());
   }
 
-  private async checkToken(): Promise<boolean> {
-    const params: HttpParams = new HttpParams().append('token', localStorage.getItem('token'));
-    return await this.http.get(environment.URLs.token, { params }).toPromise().then(el => {
-      return !!el;
-    });
-  }
-
-  private getUserByToken(): void {
+  public getUserByToken(): void {
     const params: HttpParams = new HttpParams().append('token', localStorage.getItem('token'));
     this.http.get(environment.URLs.token, { params }).pipe(retryWhen(errors => errors.pipe(delay(1000), take(10))))
       .subscribe((user: Account) => {
         this.setAuthUser(user);
       });
+  }
+
+  private async checkToken(): Promise<boolean> {
+    const params: HttpParams = new HttpParams().append('token', localStorage.getItem('token'));
+    return await this.http.get(environment.URLs.token, { params }).toPromise().then(el => {
+      return !!el;
+    });
   }
 
   private initEvents(): void {

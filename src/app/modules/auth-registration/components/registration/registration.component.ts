@@ -17,21 +17,21 @@ export class RegistrationComponent implements OnInit {
 
   public passwordControl: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
-  public formGroup: FormGroup = new FormGroup({
-    firstname: new FormControl(''),
-    lastname: new FormControl(''),
-    login: new FormControl(''),
-    password: this.passwordControl,
-    passwordRepeat: new FormControl(''),
-  });
-
   // public formGroup: FormGroup = new FormGroup({
-  //   firstname: new FormControl('', [Validators.required, Validators.pattern('^[A-ZА-Я][a-zа-я]*$')]),
-  //   lastname: new FormControl('', [Validators.required, Validators.pattern('^[A-ZА-Я][a-zа-я]*$')]),
-  //   login: new FormControl('', [Validators.required, Validators.email]),
+  //   firstname: new FormControl(''),
+  //   lastname: new FormControl(''),
+  //   login: new FormControl(''),
   //   password: this.passwordControl,
-  //   passwordRepeat: new FormControl('', [Validators.required, RepeatControlValidator.repeat(this.passwordControl)]),
+  //   passwordRepeat: new FormControl(''),
   // });
+
+  public formGroup: FormGroup = new FormGroup({
+    firstname: new FormControl('', [Validators.required, Validators.pattern('^[A-ZА-Я][a-zа-я]*$')]),
+    lastname: new FormControl('', [Validators.required, Validators.pattern('^[A-ZА-Я][a-zа-я]*$')]),
+    login: new FormControl('', [Validators.required, Validators.email]),
+    password: this.passwordControl,
+    passwordRepeat: new FormControl('', [Validators.required, RepeatControlValidator.repeat(this.passwordControl)]),
+  });
 
   constructor(
     private readonly authService: AuthHttpService,
@@ -51,7 +51,7 @@ export class RegistrationComponent implements OnInit {
         this.notificationService.notify('Пользователь с таким email уже существует', 'error');
       } else {
         localStorage.setItem('token', result.token);
-        this.accountService.setAuthUser(this.formGroup.value as Account);
+        this.accountService.getUserByToken();
         this.router.navigate(['/']);
       }
     }, err => {
