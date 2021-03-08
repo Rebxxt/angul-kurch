@@ -42,9 +42,11 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.articleService.getArticle(this.activatedRoute.snapshot.params.id).subscribe(article => {
-      this.currentArticle = article[0];
-      this.form.get('title').setValue(this.currentArticle.title);
-      this.form.get('content').setValue(this.currentArticle.content);
+      if (article != undefined) {
+        this.currentArticle = article[0];
+        this.form.get('title').setValue(this.currentArticle.title);
+        this.form.get('content').setValue(this.currentArticle.content);
+      }
     }, err => {}, () => {
       this.load = true;
     });
