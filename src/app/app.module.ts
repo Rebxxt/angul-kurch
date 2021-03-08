@@ -16,6 +16,7 @@ import {HttpHandlerInterceptor} from './infrastructure/interceptors/http-handler
 import {ArticlesModule} from './modules/articles/articles.module';
 import {ArticleCreaterModule} from './modules/article-creater/article-creater.module';
 import {QuillModule} from 'ngx-quill';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {QuillModule} from 'ngx-quill';
     ArticlesModule,
     ArticleCreaterModule,
     QuillModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {

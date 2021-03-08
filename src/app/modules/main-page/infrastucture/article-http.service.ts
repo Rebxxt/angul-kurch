@@ -19,6 +19,15 @@ export class ArticleHttpService {
     return this.http.get(environment.URLs.articles, { params }).pipe(retryWhen(errors => errors.pipe(delay(1000), take(10))));
   }
 
+  public getArticlesByCreater(accountId: number, deleted: boolean = false, moderateCheck: boolean = true, moderateApply: boolean = true): Observable<any> {
+    const params: HttpParams = new HttpParams()
+      .append('deleted', deleted.toString())
+      .append('moderate_check', moderateCheck.toString())
+      .append('moderate_apply', moderateApply.toString())
+      .append('account_id', accountId.toString());
+    return this.http.get(environment.URLs.articles, { params }).pipe(retryWhen(errors => errors.pipe(delay(1000), take(10))));
+  }
+
   public deleteArticle(body): Observable<any> {
     return this.http.delete(environment.URLs.articles, { params: body });
   }

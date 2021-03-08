@@ -1,0 +1,35 @@
+<div
+  class="articles__card"
+  *ngFor="let article of articles"
+>
+  <hr>
+  <div class="card__header">
+    <p>{{article.author?.firstname}} {{article.author?.lastname}}</p>
+    <p>{{article.dateCreated | date : 'shortDate'}}</p>
+  </div>
+
+  <a [routerLink]="'article/' + article.id">{{article.title}}</a>
+
+  <div class="card__tags">
+
+  </div>
+
+  <div [innerHTML]="article.content.substr(0, 300) + (article.content.length > 300 ? '...' : '')"></div>
+  <button
+    class="card__join"
+    [routerLink]="'/moderate/article/' + article.id">Открыть</button>
+
+  <div class="card__info">
+    <div class="card__info-item">
+      <span>Рейтинг: <span appRatingColor>{{article.rating}}</span></span>
+    </div>
+    <span>&nbsp;|&nbsp;</span>
+    <div class="card__info-item">
+      <span>Зрителей: <span>{{article.viewers ? article.viewers : '0' }}</span> </span>
+    </div>
+    <span>&nbsp;|&nbsp;</span>
+    <div class="card__info-item">
+      <span>Комментариев: <span>{{article.comments ? article.comments : '0'}}</span> </span>
+    </div>
+  </div>
+</div>

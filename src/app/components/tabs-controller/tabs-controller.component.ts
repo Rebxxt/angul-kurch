@@ -26,6 +26,11 @@ export class TabsControllerComponent implements AfterViewInit {
   @Input('tabTextColor') tabTextColor = 'black';
   @Input('tabActiveColor') tabActiveColor = '#333';
   @Input('tabActiveTextColor') tabActiveTextColor = 'black';
+  @Input('padding') padding = '20px 30px';
+  @Input('fontSize') fontSize = '1.2em';
+  @Input('fontWeight') fontWeight = 'normal';
+  @Input('show') show = 'block';
+  @Input('fullWidth') fullWidth = false;
 
 
   @ViewChild('dialogView', { read: ViewContainerRef }) dialogView: ViewContainerRef;

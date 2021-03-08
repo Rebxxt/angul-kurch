@@ -35,11 +35,24 @@
       <li class="account-role">{{getRoles()}}</li>
       <li>{{currentAccount?.lastname}} {{currentAccount?.firstname}}</li>
       <li>Рейтинг: <span appRatingColor>{{currentAccount?.rating}}</span></li>
-      <li appRolesAdmin>Установить роль...</li>
+      <li appRolesAdmin>
+      </li>
     </ul>
   </div>
 </div>
 
 <div class="account-tabs">
-  <button>temp</button>
+  <app-tabs-controller
+    [tabs]="tabs"
+    padding="15px 10px"
+    fontSize="1em"
+    [tabActiveColor]="'#ffa841'"
+    [tabColor]="'#e7703a'"
+    [tabTextColor]="'white'"
+    [tabActiveTextColor]="'white'"
+    [fullWidth]="true"
+    fontWeight="bold"
+  >
+
+  </app-tabs-controller>
 </div>

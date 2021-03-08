@@ -1,21 +1,29 @@
 <div
   class="form-group"
   [style.background]="backgroundColor"
+  [style.width]="fullWidth ? '100%' : ''"
 >
   <div
     class="form-group__tabs"
+    [style.width]="fullWidth ? '100%' : ''"
   >
     <div
       class="form-group__tab"
       *ngFor="let i of tabs"
+      (click)="setComponent(i)"
       [class.active-tab]="i == activeTab"
-      [ngStyle]="{ background: i == activeTab ? tabActiveColor : tabColor,
-       color: i == activeTab ? tabActiveTextColor : tabTextColor }"
+      [style.display]="i.show"
+      [style.padding]="padding"
+      [style.background]="i == activeTab ? tabActiveColor : tabColor"
+      [style.color]="i == activeTab ? tabActiveTextColor : tabTextColor"
+      [style.width]="fullWidth ? '100%' : ''"
     >
       <div
         class="form-group__tab-button"
-        (click)="setComponent(i)"
-      ><span>{{i.title}}</span></div>
+      ><span
+        [style.fontSize]="fontSize"
+        [style.fontWeight]="fontWeight"
+      >{{i.title}}</span></div>
     </div>
   </div>
 
