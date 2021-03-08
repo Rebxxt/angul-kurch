@@ -18,7 +18,7 @@
           <a class="comments-card__header-name">{{i.author.lastname}} {{i.author.firstname}}</a>
         </div>
 
-        <p class="comments-card__header-text">{{i.date_created | date}}</p>
+        <p class="comments-card__header-text">{{i.date_created | date : 'short'}}</p>
         <a class="comments-card__header-text comments-card__header-link" title="Ссылка на комментарий" href="/article/{{currentArticleId}}#comment_{{i.id}}">#{{i.id}}</a>
       </div>
 

@@ -52,6 +52,9 @@ export class CommentBlockComponent implements OnInit {
       article_id: this.currentArticleId,
       text: this.form.controls.text.value
     }).subscribe({
+      next: () => {
+        this.form.reset();
+      },
       complete: () => {
         this.updateComments();
       }
