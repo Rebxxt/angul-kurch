@@ -22,6 +22,8 @@ export class AccountsComponent implements OnInit, OnDestroy {
   public currentAccountId;
   public currentAccount: Account;
 
+  public pic;
+
   private subs: Subscription = new Subscription();
 
   constructor(
@@ -32,13 +34,7 @@ export class AccountsComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit(): void {
-    console.log('init')
-    this.activatedRoute.params.subscribe(el => {
-      this.accountService.getAuthUser(el.id).subscribe(account => {
-        this.currentAccountId = account.id;
-        this.currentAccount = account;
-      })
-    })
+    this.initAccount();
   }
 
   public ngOnDestroy(): void {
@@ -52,9 +48,17 @@ export class AccountsComponent implements OnInit, OnDestroy {
 
   public uploadImageAccount(file: File): void {
     if (imageAccess.includes(file.type)) {
-      this.accountHttp.setAccountPic(this.currentAccountId, file).subscribe(res => {
-        console.log(res);
-      });
+      this.accountHttp.setAccountPic(this.currentAccountId, file, () => this.initAccount());
     }
+  }
+
+  private initAccount() {
+    this.activatedRoute.params.subscribe(el => {
+      this.accountService.getAuthUser(el.id, true).subscribe(account => {
+        this.currentAccountId = account.id;
+        this.currentAccount = account;
+        this.pic = account.pic;
+      });
+    });
   }
 }

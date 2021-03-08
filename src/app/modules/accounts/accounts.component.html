@@ -10,16 +10,25 @@
     class="account-header__pic"
     [class.my-account]="currentAccountId === accountService.authAccountId"
   >
-    <div class="account__pic account__no-pic">
-      <h1 class="account__pic-current">
+    <div class="account__pic" [class.account__no-pic]="!pic"
+         [style.background]="pic ? 'center / 100% auto no-repeat url(\'' + pic + '\')' : 'rgb(255,134,134)'">
+      <h1 class="account__pic-current" *ngIf="!pic">
         {{currentAccount?.lastname[0].toUpperCase()}}
       </h1>
       <div class="account__pic-uploader">
-        <label for="file">Обновить фото</label>
-        <input type="file" class="account__pic-upload" id="file" accept="image/vnd.sealedmedia.softseal.jpg" (change)="uploadImageAccount($event.target.files[0])"/>
+        <label
+          for="file"
+          class="account__pic-button"
+        >Обновить фото</label>
+        <input
+          type="file"
+          style="display: none"
+          id="file"
+          (change)="uploadImageAccount($event.target.files[0])"/>
       </div>
     </div>
   </div>
+
 
   <div class="account-header__info">
     <ul>
@@ -30,11 +39,6 @@
     </ul>
   </div>
 </div>
-
-<form action="http://localhost:3000/api/account/pic" method="post"  enctype="multipart/form-data">
-  <input type="file">
-  <button type="submit">submit</button>
-</form>
 
 <div class="account-tabs">
   <button>temp</button>

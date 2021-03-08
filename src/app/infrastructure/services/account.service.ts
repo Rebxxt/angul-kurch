@@ -29,8 +29,8 @@ export class AccountService {
     }
   }
 
-  public getAuthUser(id): Observable<any> {
-    const params: HttpParams = new HttpParams().append('id', id.toString());
+  public getAuthUser(id, pic: boolean = false): Observable<any> {
+    const params: HttpParams = new HttpParams().append('id', id.toString()).append('takePic', pic.toString());
     return this.http.get(environment.URLs.account, { params });
   }
 

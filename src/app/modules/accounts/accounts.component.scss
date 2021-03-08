@@ -26,8 +26,8 @@
     display: flex;
     justify-content: space-between;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     box-shadow: #333 1px 2px 5px -2px;
   }
 
@@ -47,14 +47,25 @@
     }
   }
 
-  &__pic-uploader {
-    display: none;
-    font-size: 14px;
-  }
+  &__pic {
+    &-uploader {
+      display: none;
+      font-size: 14px;
+      margin: auto;
+    }
 
-  &__pic-upload {
-    font-size: 14px;
-    text-align: center;
+    &-upload {
+      font-size: 14px;
+      text-align: center;
+    }
+
+    &-button {
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      font-size: 14px;
+      display: block;
+    }
   }
 
   &-role {
@@ -73,6 +84,6 @@
   }
 
   &:hover .account__pic-current {
-    display: none;
+    filter: blur(1px);
   }
 }
