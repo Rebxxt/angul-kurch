@@ -6,12 +6,13 @@ import {SectionPageComponent} from './modules/section-page/section-page.componen
 import {AuthRegistrationComponent} from './modules/auth-registration/auth-registration.component';
 import {ArticlesComponent} from './modules/articles/articles.component';
 import {ArticleCreaterComponent} from './modules/article-creater/article-creater.component';
+import {AdminRootsGuard} from './infrastructure/guards/admin-roots.guard';
+import {GuardErrorComponent} from './modules/guard-error/guard-error.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainPageComponent,
-
   },
   {
     path: 'account/:id',
@@ -35,7 +36,12 @@ const routes: Routes = [
   },
   {
     path: 'moderate',
+    canActivate: [AdminRootsGuard],
     loadChildren: () => import('./modules/moderate/moderate.module').then(m => m.ModerateModule),
+  },
+  {
+    path: 'no-access',
+    component: GuardErrorComponent,
   }
 ];
 

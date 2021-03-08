@@ -19,12 +19,14 @@ import {QuillModule} from 'ngx-quill';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CommentBlockModule} from './components/comment-block/comment-block.module';
 import {RatingColorModule} from './infrastructure/directives/rating-color.module';
+import { GuardErrorComponent } from './modules/guard-error/guard-error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderNavBarComponent,
     SectionPageComponent,
+    GuardErrorComponent,
   ],
   imports: [
     BrowserModule,
