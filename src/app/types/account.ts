@@ -9,4 +9,5 @@ export class Account {
   companyId: string;
   token?: string;
   roles?: string[];
+  pic?: string;
 }

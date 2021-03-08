@@ -17,6 +17,8 @@ import {ArticlesModule} from './modules/articles/articles.module';
 import {ArticleCreaterModule} from './modules/article-creater/article-creater.module';
 import {QuillModule} from 'ngx-quill';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {CommentBlockModule} from './components/comment-block/comment-block.module';
+import {RatingColorModule} from './infrastructure/directives/rating-color.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ArticleCreaterModule,
     QuillModule,
     BrowserAnimationsModule,
+    CommentBlockModule,
+    RatingColorModule,
   ],
   providers: [
     {
@@ -44,8 +48,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       useClass: HttpHandlerInterceptor,
       multi: true,
     },
-  ],
-  exports: [
   ],
   bootstrap: [AppComponent]
 })

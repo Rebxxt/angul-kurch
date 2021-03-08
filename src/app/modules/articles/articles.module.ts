@@ -6,6 +6,8 @@ import {CommonModule} from '@angular/common';
 import {MainPageModule} from '../main-page/main-page.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {QuillModule} from 'ngx-quill';
+import {CommentBlockModule} from '../../components/comment-block/comment-block.module';
+import {RatingColorModule} from '../../infrastructure/directives/rating-color.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import {QuillModule} from 'ngx-quill';
     MainPageModule,
     ReactiveFormsModule,
     QuillModule,
+    CommentBlockModule,
+    RatingColorModule,
   ],
   providers: [
     ArticleHttpService,

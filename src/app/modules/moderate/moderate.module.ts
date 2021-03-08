@@ -7,6 +7,8 @@ import {CommonModule} from '@angular/common';
 import {MainPageModule} from '../main-page/main-page.module';
 import { ArticleCardComponent } from './modules/article-card/article-card.component';
 import {ArticleCardHttpService} from './infrastructure/services/article-card-http.service';
+import {CommentBlockModule} from '../../components/comment-block/comment-block.module';
+import {RatingColorModule} from '../../infrastructure/directives/rating-color.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {ArticleCardHttpService} from './infrastructure/services/article-card-htt
   imports: [
     ModerateRoutingModule,
     CommonModule,
-    MainPageModule
+    MainPageModule,
+    CommentBlockModule,
+    RatingColorModule,
   ],
   exports: [
     ModerateComponent,

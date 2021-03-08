@@ -1,0 +1,55 @@
+<h3>Комментарии <span style="color: #777">{{commentsService?.comments?.length == null ? 0 : commentsService?.comments?.length}}</span></h3>
+
+<div class="comments">
+  <div class="comments-card"
+    *ngFor="let i of commentsService?.comments"
+    id="comment_{{i.id}}"
+  >
+    <div class="comments-card__header">
+      <div class="comments-card__header-info">
+        <div [routerLink]="['/', 'account', i.author_id]" class="comments-card__header-account">
+          <div
+            class="comments-card__header-pic"
+            [class.account__no-pic]="!i?.author.pic"
+            [style.background]="i?.author?.pic ? 'center / 100% auto no-repeat url(\'' + i?.author?.pic + '\')' : 'rgb(255,134,134)'"
+          >
+          </div>
+
+          <a class="comments-card__header-name">{{i.author.lastname}} {{i.author.firstname}}</a>
+        </div>
+
+        <p class="comments-card__header-text">{{i.date_created | date}}</p>
+        <a class="comments-card__header-text comments-card__header-link" title="Ссылка на комментарий" href="/article/{{currentArticleId}}#comment_{{i.id}}">#{{i.id}}</a>
+      </div>
+
+      <div class="comments-card__header-rating">
+        <div class="rating rating-minus">-</div>
+        <p appRatingColor>{{i.rating}}</p>
+        <div class="rating rating-plus">+</div>
+      </div>
+    </div>
+    <p>{{i.text}}</p>
+  </div>
+
+  <p *ngIf="!commentsService?.comments?.length">Нет комментариев...</p>
+</div>
+
+<h3 style="margin-top: 50px">Написать комментарий</h3>
+<div class="wrapper" *ngIf="sendBlock">
+  <div class="comment-send__header">
+    <div class="comment-send__account">
+      <div class="account__pic" [class.account__no-pic]="!currentAccount?.pic"
+           [style.background]="currentAccount?.pic ? 'center / 100% auto no-repeat url(\'' + currentAccount?.pic + '\')' : 'rgb(255,134,134)'"></div>
+      <div>
+        <p class="comment-send__name">{{currentAccount?.firstname}} {{currentAccount?.lastname}}</p>
+        <p class="comment-send__name">{{currentAccount?.rating}}</p>
+      </div>
+    </div>
+  </div>
+  <form (submit)="sendNewComment()" [formGroup]="form">
+    <textarea cols="30" rows="10" class="comment-send__input" formControlName="text"></textarea>
+    <div class="comment-send__footer">
+      <button class="comment-send__submit" type="submit">Отправить</button>
+    </div>
+  </form>
+</div>

@@ -17,7 +17,7 @@
   <div [innerHTML]="article.content.substr(0, 300) + (article.content.length > 300 ? '...' : '')"></div>
   <button
     class="card__join"
-    [routerLink]="'/moderate/article/' + article.id">Открыть</button>
+    [routerLink]="'/article/' + article.id">Открыть</button>
 
   <div class="card__info">
     <div class="card__info-item">

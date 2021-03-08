@@ -85,23 +85,24 @@
   background: #ffee9a;
 }
 .button-delete {
-  background: rgb(255, 59, 59);
+  background: rgb(193, 45, 45);
   color: white;
 
   &:hover {
-    background: rgb(162, 37, 37);
+    background: rgb(255, 59, 59);
   }
 }
 .button-approve {
-  background: rgb(182, 255, 109);
-  color: black;
+  background: rgb(131, 186, 52);
+  color: white;
 
   &:hover {
-    background: rgb(217, 255, 168);
+    background: rgb(172, 224, 99);
   }
 }
 .button-warn {
   background: rgb(255, 137, 83);
+  color: white;
 }
 
 .upper-block {

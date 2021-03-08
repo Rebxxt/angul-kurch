@@ -1,0 +1,147 @@
+.wrapper {
+  margin-bottom: 40px;
+  background: #ddd;
+  padding: 15px 30px;
+
+  .comment-send {
+
+    &__header {
+      display: flex;
+      justify-content: start;
+    }
+
+    &__title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin: 0 0 15px 0;
+    }
+
+    &__input {
+      border: 1px solid #888;
+      border-radius: 3px;
+      padding: 15px;
+      min-width: 100%;
+      max-width: 100%;
+      min-height: 50px;
+      height: 50px;
+      font-family: "Times New Roman", sans-serif;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+    }
+
+    &__footer {
+      display: flex;
+    }
+
+    &__submit {
+      border: none;
+      border-radius: 3px;
+      background: rgb(131, 186, 52);
+      padding: 5px 10px;
+      color: white;
+      transition: 0.2s;
+
+      &:hover {
+        background: rgb(172, 224, 99);
+        cursor: pointer;
+      }
+    }
+
+    &__account {
+      display: flex;
+      margin-bottom: 15px;
+
+      p {
+        margin: 5px 0 0 10px;
+      }
+    }
+
+    &__name {
+      font-weight: bold;
+      color: #555;
+    }
+
+  }
+}
+
+.comments-card {
+  &__header {
+    justify-content: space-between;
+  }
+  &__header,
+  &__header-info,
+  &__header-rating {
+    display: flex;
+    align-items: center;
+
+    &-pic {
+      width: 25px;
+      height: 25px;
+      border-radius: 3px;
+    }
+
+    &-account {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    &-name {
+      margin-left: 15px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+      transition: 0.1s;
+
+      &:hover {
+        color: #888;
+      }
+    }
+
+    &-text {
+      margin-left: 15px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #888;
+    }
+
+    &-link {
+      text-decoration: none;
+      transition: 0.1s;
+      cursor: pointer;
+
+      &:hover {
+        color: #bbb;
+      }
+    }
+  }
+}
+
+.account {
+  &__pic {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    box-shadow: #333 1px 2px 5px -2px;
+  }
+}
+
+.rating {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 22px;
+  margin: 0 15px;
+  padding: 5px;
+
+  &-plus {
+    color: #4d9600;
+  }
+
+  &-minus {
+    color: #ec0000;
+  }
+}

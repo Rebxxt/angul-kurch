@@ -22,7 +22,7 @@
         class="header__link"
         [routerLink]="'/account/' + currentAccountId"
         *ngIf="currentAccountId != undefined"
-      >Мой аккаунт</a>
+      >{{currentAccount.login}}</a>
       <button
         class="header__link button"
         (click)="exitAuth()"

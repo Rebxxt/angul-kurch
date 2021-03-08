@@ -14,7 +14,15 @@ export class HttpHandlerInterceptor implements HttpInterceptor {
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(
+    const authToken = sessionStorage.getItem('token');
+    let authReq;
+    if (authToken) {
+      authReq = req.clone({
+        headers: req.headers.set('Token', authToken)
+      });
+    }
+
+    return next.handle(authReq ? authReq : req).pipe(
       catchError(err => {
         if (err.status === 504) {
           this.notificationService.notify('Ошибка соединения с сервером', 'error');

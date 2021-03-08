@@ -25,8 +25,12 @@
   <div *ngIf="currentArticle.moderate_check">
     <h4 style="text-align: center">Ожидание исправлений</h4>
   </div>
-</div>
 
+  <hr>
+
+  <app-comment-block></app-comment-block>
+
+</div>
 
 <div class="empty" *ngIf="!currentArticle && load">
   <h1>404: Не найдена статья с таким id</h1>

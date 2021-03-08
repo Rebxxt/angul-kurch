@@ -3,7 +3,8 @@
 <div class="content" *ngIf="currentArticle">
   <div class="header">
     <p>{{currentArticle.author.firstname}} {{currentArticle.author.lastname}}</p>
-    <p appRatingColor>{{currentArticle.rating}}</p>
+    <p appRatingColor *ngIf="currentArticle.moderate_check && currentArticle.moderate_apply">{{currentArticle.rating}}</p>
+    <p class="warning-tag" *ngIf="!currentArticle.moderate_check && !currentArticle.moderate_apply">Статья в режиме модерации</p>
     <p>{{currentArticle.dateCreated | date}}</p>
   </div>
 
@@ -56,7 +57,11 @@
     </form>
   </div>
 
+  <hr style="margin: 30px 0;">
+
+  <app-comment-block sendBlock="true"></app-comment-block>
 </div>
+
 
 
 <div class="empty" *ngIf="!currentArticle && load">

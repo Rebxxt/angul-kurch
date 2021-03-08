@@ -9,11 +9,12 @@ import { ArticleCardComponent } from './components/article-card/article-card.com
 import { ArticlePageComponent } from './components/article-page/article-page.component';
 import {RolesAdminDirective} from '../../infrastructure/directives/roles-admin.directive';
 import {RolesModerateDirective} from '../../infrastructure/directives/roles-moderate.directive';
+import {CommentBlockModule} from '../../components/comment-block/comment-block.module';
+import {RatingColorModule} from '../../infrastructure/directives/rating-color.module';
 
 @NgModule({
   declarations: [
     MainPageComponent,
-    RatingColorDirective,
     ArticleCardComponent,
     ArticlePageComponent,
     RolesAdminDirective,
@@ -23,9 +24,10 @@ import {RolesModerateDirective} from '../../infrastructure/directives/roles-mode
     CommonModule,
     RouterModule,
     HttpClientModule,
+    CommentBlockModule,
+    RatingColorModule,
   ],
   exports: [
-    RatingColorDirective,
     RolesAdminDirective,
     RolesModerateDirective,
   ],
