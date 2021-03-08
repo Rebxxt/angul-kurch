@@ -12,6 +12,8 @@ import {delay, retryWhen, take} from 'rxjs/operators';
 export class AccountService {
   public admin = false;
 
+  public authAccountId: number;
+
   private _authUser: ReplaySubject<Account> = new ReplaySubject<Account>(1);
   public get authUser(): Observable<Account> {
     return this._authUser.asObservable();
@@ -27,13 +29,13 @@ export class AccountService {
     }
   }
 
-  public getAuthUser(): void {
-    const params: HttpParams = new HttpParams().append('id', '0');
-    this.http.get(environment.URLs.account, { params }).subscribe(result => {
-    });
+  public getAuthUser(id): Observable<any> {
+    const params: HttpParams = new HttpParams().append('id', id.toString());
+    return this.http.get(environment.URLs.account, { params });
   }
 
   public setAuthUser(value: Account): void {
+    this.authAccountId = value.id
     this._authUser.next(value);
     if (value.login === 'admin@ad') {
       this.admin = true;

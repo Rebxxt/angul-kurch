@@ -5,6 +5,7 @@ export class Account {
   lastname: string;
   login: string;
   id: number;
+  rating?: number;
   companyId: string;
   token?: string;
   roles?: string[];
