@@ -23,9 +23,20 @@
       </div>
 
       <div class="comments-card__header-rating" *ngIf="currentAccount">
-        <div class="rating rating-minus" (click)="likeComment(i.id, false)">-</div>
-        <p appRatingColor>{{i.rating}}</p>
-        <div class="rating rating-plus" (click)="likeComment(i.id, true)">+</div>
+        <div
+          class="rating rating-minus"
+          (click)="likeComment(i.id, false)"
+        >-</div>
+        <div>
+          <p appRatingColor style="text-align: center">{{i.rating}}</p>
+          <div *ngIf="checkLiked(i.id) !== undefined">
+              <p style="text-align: center" title="Ваша оценка">{{checkLiked(i.id) ? '+' : '-'}}</p>
+          </div>
+        </div>
+        <div
+          class="rating rating-plus"
+          (click)="likeComment(i.id, true)"
+        >+</div>
       </div>
     </div>
     <p>{{i.text}}</p>

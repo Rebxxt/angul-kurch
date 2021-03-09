@@ -15,7 +15,7 @@ export class CommentBlockComponent implements OnInit {
 
   @Input('sendBlock') sendBlock: boolean = false;
 
-  public currentArticleId;
+  public currentArticleId: number;
 
   public currentAccount: Account;
   public form: FormGroup = new FormGroup({
@@ -33,15 +33,9 @@ export class CommentBlockComponent implements OnInit {
     this.accountService.authUser.subscribe(account => {
       this.currentAccount = account;
     });
-    const fragment = this.route.snapshot.fragment;
-    if (fragment !== '') {
-      console.log(fragment)
-      const com = document.getElementById(fragment);
-      console.log(com)
-      // this.(['#' + fragment]);
-    }
     this.currentArticleId = this.route.snapshot.params?.id;
     this.updateComments();
+    this.getLikedCommentsAuthUser();
   }
 
   public updateComments(): void {
@@ -69,6 +63,7 @@ export class CommentBlockComponent implements OnInit {
       comment_id: commentId,
     }).subscribe(res => {
       console.log(res);
+      this.getLikedCommentsAuthUser();
       this.updateComments();
     });
   }
@@ -79,12 +74,28 @@ export class CommentBlockComponent implements OnInit {
       like,
     }).subscribe({
       next: res => {
+        this.updateCommentAfterLike(commentId);
         this.notificationService.notify('Вы успешно оценили комментарий', 'primary');
       },
       error: (err) => {
-        console.log(err)
         this.notificationService.notify(err.error.err, 'warning');
       }
     });
+  }
+
+  public getLikedCommentsAuthUser(): void {
+    this.commentsService.getLikedComments(this.currentArticleId);
+  }
+
+  public updateCommentAfterLike(commentId: number): void {
+    this.commentsService.updateCommentAfterLike(commentId);
+  }
+
+  public checkLiked(commentId: number): boolean | undefined {
+    const ind = this.commentsService.likedComments?.findIndex(el => el.id === commentId);
+    if (ind !== -1) {
+      return this.commentsService.likedComments[ind].comment_like;
+    }
+    return;
   }
 }

@@ -12,9 +12,13 @@ export class CommentsHttpService {
   ) {
   }
 
-  public getComments(id: number): Observable<any> {
-    const params = new HttpParams().append('article_id', id.toString());
+  public getComments(articleId: number): Observable<any> {
+    const params = new HttpParams().append('article_id', articleId.toString());
     return this.http.get(environment.URLs.comments, { params });
+  }
+
+  public getComment(commentId: number): Observable<any> {
+    return this.http.get(`${environment.URLs.comments}/${commentId}`);
   }
 
   public sendComment(body: ArticleCommentRequest): Observable<any> {
@@ -29,5 +33,9 @@ export class CommentsHttpService {
       .append('comment_id', body.comment_id.toString())
       .append('like', body.like.toString());
     return this.http.post(environment.URLs.commentsLike, params);
+  }
+
+  public getLikedComments(currentArticleId: number): Observable<any> {
+    return this.http.get(`${environment.URLs.commentsUserArticle}/${currentArticleId}`);
   }
 }

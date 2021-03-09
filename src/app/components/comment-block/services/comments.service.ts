@@ -4,10 +4,12 @@ import {ArticleComment} from '../types/article-comment';
 import {ArticleCommentRequest} from '../types/article-comment-request';
 import {Observable} from 'rxjs';
 import {CommentLikeRequest} from '../types/comment-like-request';
+import {LikedComments} from '../types/liked-comments';
 
 @Injectable()
 export class CommentsService {
   public comments: ArticleComment[];
+  public likedComments: LikedComments[];
 
   constructor(
     private readonly commentsHttpService: CommentsHttpService,
@@ -26,5 +28,18 @@ export class CommentsService {
 
   public likeComment(comment: CommentLikeRequest): Observable<any> {
     return this.commentsHttpService.likeComment(comment);
+  }
+
+  public updateCommentAfterLike(commentId: number): void {
+    this.commentsHttpService.getComment(commentId).subscribe(result => {
+      const currentComment = this.comments.findIndex(el => el.id === result[0].id);
+      this.comments[currentComment] = result[0];
+    });
+  }
+
+  public getLikedComments(currentArticleId: number): void {
+    this.commentsHttpService.getLikedComments(currentArticleId).subscribe(res => {
+      this.likedComments = res;
+    });
   }
 }

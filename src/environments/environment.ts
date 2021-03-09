@@ -3,6 +3,7 @@ export const environment = {
   URLs: {
     articles: 'api/articles',
     comments: 'api/comments',
+    commentsUserArticle: 'api/comments/users/article',
     commentsLike: 'api/comments/like',
     article: 'api/article',
     articleRating: 'api/articles/rating',

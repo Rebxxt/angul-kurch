@@ -68,12 +68,20 @@
 .comments-card {
   &__header {
     justify-content: space-between;
+    &-rating {
+      width: 110px;
+
+      p {
+        margin: 0;
+      }
+    }
   }
   &__header,
   &__header-info,
   &__header-rating {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     &-pic {
       width: 25px;
@@ -134,8 +142,8 @@
   cursor: pointer;
   font-weight: bold;
   font-size: 22px;
-  margin: 0 15px;
   padding: 5px;
+
 
   &-plus {
     color: #4d9600;
@@ -143,5 +151,13 @@
 
   &-minus {
     color: #ec0000;
+  }
+
+  &-liked {
+    margin: 0;
+  }
+
+  &-already {
+    margin: 0;
   }
 }
