@@ -5,6 +5,8 @@ import {Account} from '../../types/account';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {NotificationService} from '../notification/infrastructure/services/notification.service';
+import {ArticleComment} from './types/article-comment';
+import {LikedComments} from './types/liked-comments';
 
 @Component({
   selector: 'app-comment-block',
@@ -56,10 +58,10 @@ export class CommentBlockComponent implements OnInit {
     });
   }
 
-  public sendSubComment(commentId: number): void {
+  public sendSubComment(commentId: number, form): void {
     this.commentsService.sendComment({
       article_id: this.currentArticleId,
-      text: this.form.controls.text.value,
+      text: form.controls.text.value,
       comment_id: commentId,
     }).subscribe(res => {
       console.log(res);
@@ -91,10 +93,10 @@ export class CommentBlockComponent implements OnInit {
     this.commentsService.updateCommentAfterLike(commentId);
   }
 
-  public checkLiked(commentId: number): boolean | undefined {
-    const ind = this.commentsService.likedComments?.findIndex(el => el.id === commentId);
+  public checkLiked(likedComments: LikedComments[], commentId: number): boolean | undefined {
+    const ind = likedComments?.findIndex(el => el.id === commentId);
     if (ind !== -1) {
-      return this.commentsService.likedComments[ind].comment_like;
+      return likedComments[ind].comment_like;
     }
     return;
   }

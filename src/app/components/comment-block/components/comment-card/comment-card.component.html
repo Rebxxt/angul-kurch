@@ -1,0 +1,51 @@
+
+<div class="comments-card__header">
+  <div class="comments-card__header-info">
+    <div [routerLink]="['/', 'account', comment.author_id]" class="comments-card__header-account">
+      <div
+        class="comments-card__header-pic"
+        [class.account__no-pic]="!comment?.author.pic"
+        [style.background]="comment?.author?.pic ? 'center / 100% auto no-repeat url(\'' + comment?.author?.pic + '\')' : 'rgb(255,134,134)'"
+      >
+      </div>
+
+      <a class="comments-card__header-name">{{comment.author.lastname}} {{comment.author.firstname}}</a>
+    </div>
+
+    <p class="comments-card__header-text">{{comment.date_created | date : 'short'}}</p>
+    <a class="comments-card__header-text comments-card__header-link" title="Ссылка на комментарий" href="/article/{{currentArticleId}}#comment_{{comment.id}}">#{{comment.id}}</a>
+  </div>
+
+  <div class="comments-card__header-rating" *ngIf="currentAccount">
+    <div
+      class="rating rating-minus"
+      (click)="likeComment(comment.id, false)"
+    >-</div>
+    <div>
+      <p appRatingColor style="text-align: center">{{comment.rating}}</p>
+      <div *ngIf="checkLiked(likedComments, comment.id) !== undefined">
+        <p style="text-align: center" title="Ваша оценка">{{checkLiked(likedComments, comment.id) ? '+' : '-'}}</p>
+      </div>
+    </div>
+    <div
+      class="rating rating-plus"
+      (click)="likeComment(comment.id, true)"
+    >+</div>
+  </div>
+</div>
+
+<p>{{comment.text}}</p>
+
+<div style="margin-bottom: 35px;">
+  <div class="flex-block">
+    <button class="button-answer" (click)="comment.sendComm = !comment.sendComm">Ответить...</button>
+    <button class="button-answer" (click)="comment.displayComm = !comment.displayComm">Посмотреть комментарии...</button>
+  </div>
+
+  <form (submit)="sendNewSubComment()" [formGroup]="form" *ngIf="comment.sendComm" style="margin-top: 20px">
+    <textarea cols="30" rows="10" class="comment-send__input" formControlName="text"></textarea>
+    <div class="comment-send__footer">
+      <button class="comment-send__submit" type="submit">Отправить</button>
+    </div>
+  </form>
+</div>

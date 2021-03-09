@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CommentsHttpService} from './comments-http.service';
-import {ArticleComment} from '../types/article-comment';
+import {ArticleComment, SubCommentTree} from '../types/article-comment';
 import {ArticleCommentRequest} from '../types/article-comment-request';
 import {Observable} from 'rxjs';
 import {CommentLikeRequest} from '../types/comment-like-request';
@@ -9,6 +9,7 @@ import {LikedComments} from '../types/liked-comments';
 @Injectable()
 export class CommentsService {
   public comments: ArticleComment[];
+  public tree: SubCommentTree[];
   public likedComments: LikedComments[];
 
   constructor(
@@ -19,6 +20,7 @@ export class CommentsService {
   public getComments(id: number): void {
     this.commentsHttpService.getComments(id).subscribe(comments => {
       this.comments = comments;
+      this.buildTree();
     });
   }
 
@@ -41,5 +43,19 @@ export class CommentsService {
     this.commentsHttpService.getLikedComments(currentArticleId).subscribe(res => {
       this.likedComments = res;
     });
+  }
+
+  private buildTree(): void {
+    this.tree = [];
+    this.comments.map((el, ind) => {
+      if (!el.comment_id) {
+        this.tree.push(el);
+      } else {
+        this.tree[ind].subComments.push(
+          ...this.comments.filter(com => com.comment_id === el.id),
+        );
+      }
+    });
+    console.log(this.tree)
   }
 }

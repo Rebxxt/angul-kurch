@@ -1,0 +1,32 @@
+<div class="comments-card"
+     *ngFor="let i of comments"
+     id="comment_{{i.id}}"
+     [style.marginLeft]="currentLvl < 20 ? (currentLvl * 10) + 'px': '200px'"
+>
+
+  <app-comment-card
+    [comment]="i"
+    [likedComments]="likedComments"
+    [likeComment]="likeComment"
+    [currentAccount]="currentAccount"
+    [checkLiked]="checkLiked"
+    [currentArticleId]="currentArticleId"
+    [updateCommentAfterLike]="updateCommentAfterLike"
+    [sendSubComment]="sendSubComment"
+  ></app-comment-card>
+
+  <div *ngIf="i.displayComm && comments && comments.length > 0">
+    <app-comments-lvl
+      [comments]="i.subComments"
+      [likedComments]="commentsService?.likedComments"
+      [checkLiked]="checkLiked"
+      [currentAccount]="currentAccount"
+      [currentAccountId]="currentArticleId"
+      [currentLvl]="currentLvl + 1"
+      [likeComment]="likeComment"
+      [updateCommentAfterLike]="updateCommentAfterLike"
+      [sendSubComment]="sendSubComment"
+    >
+    </app-comments-lvl>
+  </div>
+</div>
