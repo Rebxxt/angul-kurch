@@ -4,6 +4,7 @@ import {AccountService} from '../../infrastructure/services/account.service';
 import {Account} from '../../types/account';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
+import {NotificationService} from '../notification/infrastructure/services/notification.service';
 
 @Component({
   selector: 'app-comment-block',
@@ -25,7 +26,7 @@ export class CommentBlockComponent implements OnInit {
     public commentsService: CommentsService,
     private readonly accountService: AccountService,
     private readonly route: ActivatedRoute,
-    private readonly el: ElementRef,
+    private readonly notificationService: NotificationService,
   ) { }
 
   public ngOnInit(): void {
@@ -69,6 +70,21 @@ export class CommentBlockComponent implements OnInit {
     }).subscribe(res => {
       console.log(res);
       this.updateComments();
+    });
+  }
+
+  public likeComment(commentId: number, like: boolean): void {
+    this.commentsService.likeComment({
+      comment_id: commentId,
+      like,
+    }).subscribe({
+      next: res => {
+        this.notificationService.notify('Вы успешно оценили комментарий', 'primary');
+      },
+      error: (err) => {
+        console.log(err)
+        this.notificationService.notify(err.error.err, 'warning');
+      }
     });
   }
 }

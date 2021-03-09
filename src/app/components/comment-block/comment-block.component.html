@@ -22,10 +22,10 @@
         <a class="comments-card__header-text comments-card__header-link" title="Ссылка на комментарий" href="/article/{{currentArticleId}}#comment_{{i.id}}">#{{i.id}}</a>
       </div>
 
-      <div class="comments-card__header-rating">
-        <div class="rating rating-minus">-</div>
+      <div class="comments-card__header-rating" *ngIf="currentAccount">
+        <div class="rating rating-minus" (click)="likeComment(i.id, false)">-</div>
         <p appRatingColor>{{i.rating}}</p>
-        <div class="rating rating-plus">+</div>
+        <div class="rating rating-plus" (click)="likeComment(i.id, true)">+</div>
       </div>
     </div>
     <p>{{i.text}}</p>

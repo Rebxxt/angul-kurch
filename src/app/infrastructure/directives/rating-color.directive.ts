@@ -13,11 +13,11 @@ export class RatingColorDirective implements AfterViewInit {
     this.el.nativeElement.innerText = Math.abs(rating);
     this.el.nativeElement.style.fontWeight = 'bold';
     if (rating > 0) {
-      this.el.nativeElement.innerText += '+';
+      this.el.nativeElement.innerText = '+' + this.el.nativeElement.innerText;
       this.el.nativeElement.style.color = 'green';
     }
     if (rating < 0) {
-      this.el.nativeElement.innerText += '-';
+      this.el.nativeElement.innerText = '-' + this.el.nativeElement.innerText;
       this.el.nativeElement.style.color = 'red';
     }
   }

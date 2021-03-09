@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 import {ArticleCommentRequest} from '../types/article-comment-request';
+import {CommentLikeRequest} from '../types/comment-like-request';
 
 @Injectable()
 export class CommentsHttpService {
@@ -21,5 +22,12 @@ export class CommentsHttpService {
       .append('article_id', body.article_id.toString())
       .append('text', body.text);
     return this.http.post(environment.URLs.comments, params);
+  }
+
+  public likeComment(body: CommentLikeRequest): Observable<any> {
+    const params: HttpParams = new HttpParams()
+      .append('comment_id', body.comment_id.toString())
+      .append('like', body.like.toString());
+    return this.http.post(environment.URLs.commentsLike, params);
   }
 }
