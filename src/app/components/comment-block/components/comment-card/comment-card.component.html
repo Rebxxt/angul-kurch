@@ -38,7 +38,7 @@
 
 <div style="margin-bottom: 35px;">
   <div class="flex-block">
-    <button class="button-answer" (click)="comment.sendComm = !comment.sendComm">Ответить...</button>
+    <button class="button-answer" (click)="comment.sendComm = !comment.sendComm" *ngIf="currentAccount">Ответить...</button>
     <button class="button-answer" (click)="comment.displayComm = !comment.displayComm">Посмотреть комментарии...</button>
   </div>
 

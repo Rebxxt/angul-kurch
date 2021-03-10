@@ -17,8 +17,8 @@
   <p *ngIf="!commentsService?.comments?.length">Нет комментариев...</p>
 </div>
 
-<h3 style="margin-top: 50px">Написать комментарий</h3>
-<div class="wrapper" *ngIf="sendBlock">
+<h3 style="margin-top: 50px" *ngIf="currentAccount?.id && sendBlock">Написать комментарий</h3>
+<div class="wrapper" *ngIf="currentAccount?.id && sendBlock">
   <div class="comment-send__header">
     <div class="comment-send__account">
       <div class="account__pic" [class.account__no-pic]="!currentAccount?.pic"
