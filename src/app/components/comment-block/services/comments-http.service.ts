@@ -22,9 +22,12 @@ export class CommentsHttpService {
   }
 
   public sendComment(body: ArticleCommentRequest): Observable<any> {
-    const params: HttpParams = new HttpParams()
+    let params: HttpParams = new HttpParams()
       .append('article_id', body.article_id.toString())
       .append('text', body.text);
+    if (body.comment_id) {
+      params = params.append('comment_id', body.comment_id.toString());
+    }
     return this.http.post(environment.URLs.comments, params);
   }
 

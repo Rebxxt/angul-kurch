@@ -29,4 +29,8 @@
     >
     </app-comments-lvl>
   </div>
+
+  <div *ngIf="i.displayComm && !comments?.length > 0">
+    <p class="no-com-message"></p>
+  </div>
 </div>

@@ -4,13 +4,13 @@
   <app-comments-lvl
     [comments]="commentsService?.tree"
     [likedComments]="commentsService?.likedComments"
-    [checkLiked]="checkLiked"
+    [checkLiked]="checkLiked.bind(this)"
     [currentAccount]="currentAccount"
     [currentAccountId]="currentArticleId"
     [currentLvl]="0"
-    [likeComment]="likeComment"
-    [updateCommentAfterLike]="updateCommentAfterLike"
-    [sendSubComment]="sendSubComment"
+    [likeComment]="likeComment.bind(this)"
+    [updateCommentAfterLike]="updateCommentAfterLike.bind(this)"
+    [sendSubComment]="sendSubComment.bind(this)"
   >
   </app-comments-lvl>
 

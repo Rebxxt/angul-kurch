@@ -20,7 +20,8 @@ export class CommentsService {
   public getComments(id: number): void {
     this.commentsHttpService.getComments(id).subscribe(comments => {
       this.comments = comments;
-      this.buildTree();
+      this.tree = this.buildTree(null, this.comments);
+      console.log('after build', this.tree)
     });
   }
 
@@ -45,17 +46,25 @@ export class CommentsService {
     });
   }
 
-  private buildTree(): void {
-    this.tree = [];
-    this.comments.map((el, ind) => {
-      if (!el.comment_id) {
-        this.tree.push(el);
-      } else {
-        this.tree[ind].subComments.push(
-          ...this.comments.filter(com => com.comment_id === el.id),
-        );
+  private buildTree(id: number, arr: ArticleComment[]): SubCommentTree[] {
+    const nextlvl: SubCommentTree[] = [];
+    arr.forEach(element => {
+      if (element.comment_id === id) {
+        const newTree: SubCommentTree = {...element,
+          subComments: this.buildTree(element.id, arr),
+          subCommentsCount: 0
+        };
+
+        let subCount = 0;
+        newTree.subComments.forEach(com => {
+          subCount += com.subCommentsCount;
+        });
+        newTree.subCommentsCount = subCount + newTree.subComments.length;
+
+        nextlvl.push(newTree);
       }
     });
-    console.log(this.tree)
+    console.log(nextlvl)
+    return nextlvl;
   }
 }

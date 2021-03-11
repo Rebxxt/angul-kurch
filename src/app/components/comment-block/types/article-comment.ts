@@ -10,6 +10,7 @@ export interface ArticleComment {
   author?: Account;
   comment_id?: number;
   displayComm?: boolean;
+  subCommentsCount?: number;
   sendComm?: boolean;
 }
 
@@ -24,5 +25,6 @@ export interface SubCommentTree {
   comment_id?: number;
   displayComm?: boolean;
   subComments?: SubCommentTree[];
+  subCommentsCount: number;
   sendComm?: boolean;
 }

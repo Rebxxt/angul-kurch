@@ -96,13 +96,20 @@
 }
 
 .button-answer {
-  border: 1px solid #ff7d27;
-  color: #ff7d27;
+  border: 1px solid #ff6a07;
+  color: #ff6a07;
   background: none;
   border-radius: 3px;
   font-size: 12px;
   padding: 3px 8px;
   cursor: pointer;
+  margin-right: 20px;
+  transition: 0.1s;
+
+  &:hover {
+    border: 1px solid #ffa772;
+    color: #ff9454;
+  }
 }
 
 .flex-block {

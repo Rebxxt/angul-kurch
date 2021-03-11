@@ -27,13 +27,17 @@ export class CommentCardComponent implements OnInit {
 
   constructor(
     public commentsService: CommentsService,
-    private readonly notificationService: NotificationService,
     ) { }
 
   ngOnInit(): void {
   }
 
   public sendNewSubComment(): void {
-    this.sendSubComment();
+    console.log(this.comment)
+    this.sendSubComment(this.comment.id, this.form);
+  }
+
+  public sendComButton(b: boolean): void {
+    this.comment.sendComm = b;
   }
 }

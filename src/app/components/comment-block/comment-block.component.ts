@@ -58,17 +58,18 @@ export class CommentBlockComponent implements OnInit {
     });
   }
 
-  public sendSubComment(commentId: number, form): void {
+  public sendSubComment(commentId: number, form: FormGroup): void {
     this.commentsService.sendComment({
       article_id: this.currentArticleId,
       text: form.controls.text.value,
       comment_id: commentId,
     }).subscribe(res => {
-      console.log(res);
       this.getLikedCommentsAuthUser();
       this.updateComments();
     });
   }
+
+  public test = this.sendSubComment.bind(this);
 
   public likeComment(commentId: number, like: boolean): void {
     this.commentsService.likeComment({
