@@ -1,0 +1,14 @@
+<div class="content" [formGroup]="formSearch">
+  <p class="search">
+    <input type="text" formControlName="searchText" class="search-input">
+    <a class="search-button" (click)="search()">
+      <svg-icon src="assets/icons/loupe.svg" [svgStyle]="{ 'width.em':0.8 }" style="margin-right: 5px"></svg-icon>
+    </a>
+  </p>
+  <p appRolesModerate>
+
+    <label><input type="checkbox" formControlName="moderateEnable" name="testCheck">Включить поиск статей для модерации</label>
+  </p>
+
+  <app-search-content></app-search-content>
+</div>

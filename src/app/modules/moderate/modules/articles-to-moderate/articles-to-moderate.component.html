@@ -9,7 +9,7 @@
     <p>{{article.dateCreated | date : 'shortDate'}}</p>
   </div>
 
-  <a [routerLink]="'article/' + article.id">{{article.title}}</a>
+  <a [routerLink]="'/moderate/article/' + article.id">{{article.title}}</a>
 
   <div class="card__tags">
 

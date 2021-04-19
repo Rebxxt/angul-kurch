@@ -64,7 +64,6 @@ export class CommentsService {
         nextlvl.push(newTree);
       }
     });
-    console.log(nextlvl)
     return nextlvl;
   }
 }

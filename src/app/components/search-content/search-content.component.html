@@ -1,0 +1,11 @@
+<div class="content">
+  <p *ngIf="!(articles?.length > 0)" class="bold">Ничего не найдено...</p>
+
+  <p *ngIf="articles?.length > 0" class="bold">Найдено {{articles?.length}} стат{{getEndOfWord(articles)}}</p>
+
+  <div class="articles">
+    <a class="articles-card" *ngFor="let i of articles" [routerLink]="['/', 'article', i.id]">
+      <p><span appRatingColor>{{i.rating}}</span> | {{i.title}}</p>
+    </a>
+  </div>
+</div>

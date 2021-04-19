@@ -53,7 +53,6 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
-    console.log(this.form)
   }
 
   public backRoute(): void {

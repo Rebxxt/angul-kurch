@@ -33,7 +33,6 @@ export class CommentCardComponent implements OnInit {
   }
 
   public sendNewSubComment(): void {
-    console.log(this.comment)
     this.sendSubComment(this.comment.id, this.form);
   }
 

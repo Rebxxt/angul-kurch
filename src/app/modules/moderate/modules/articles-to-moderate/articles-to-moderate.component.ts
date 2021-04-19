@@ -22,7 +22,6 @@ export class ArticlesToModerateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.queryParams.waiting, this.route.snapshot.queryParams.waiting === 'true')
     if (this.route.snapshot.queryParams.waiting === 'true') {
       this.getArticles(true);
     } else {

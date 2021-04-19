@@ -8,6 +8,7 @@ import {ArticlesComponent} from './modules/articles/articles.component';
 import {ArticleCreaterComponent} from './modules/article-creater/article-creater.component';
 import {AdminRootsGuard} from './infrastructure/guards/admin-roots.guard';
 import {GuardErrorComponent} from './modules/guard-error/guard-error.component';
+import {SearchComponent} from './modules/search/search.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'account/:id',
     component: AccountsComponent,
+  },
+  {
+    path: 'search',
+    component: SearchComponent,
   },
   {
     path: 'sections',

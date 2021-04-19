@@ -50,7 +50,6 @@ export class ArticleCardComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    console.log(this.form.value)
   }
 
   public approveArticle(): void {

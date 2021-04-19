@@ -20,6 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CommentBlockModule} from './components/comment-block/comment-block.module';
 import {RatingColorModule} from './infrastructure/directives/rating-color.module';
 import { GuardErrorComponent } from './modules/guard-error/guard-error.component';
+import {SearchModule} from './modules/search/search.module';
+import {AngularSvgIconModule} from 'angular-svg-icon';
+import {SearchContentModule} from './components/search-content/search-content.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,10 @@ import { GuardErrorComponent } from './modules/guard-error/guard-error.component
     BrowserAnimationsModule,
     CommentBlockModule,
     RatingColorModule,
+    SearchModule,
+    AngularSvgIconModule.forRoot(),
+    SearchContentModule,
+
   ],
   providers: [
     {
