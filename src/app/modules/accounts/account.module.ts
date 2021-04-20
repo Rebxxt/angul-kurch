@@ -12,6 +12,7 @@ import { PublicationArticlesTabComponent } from './components/tabs/publication-a
 import { WaitingModerateArticlesTabComponent } from './components/tabs/waiting-moderate-articles-tab/waiting-moderate-articles-tab.component';
 import { LikesArticlesTabComponent } from './components/tabs/likes-articles-tab/likes-articles-tab.component';
 import {RatingColorModule} from '../../infrastructure/directives/rating-color.module';
+import {ArticlesToEditComponent} from './components/tabs/articles-to-edit/articles-to-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {RatingColorModule} from '../../infrastructure/directives/rating-color.mo
     PublicationArticlesTabComponent,
     WaitingModerateArticlesTabComponent,
     LikesArticlesTabComponent,
+    ArticlesToEditComponent
   ],
     imports: [
         CommonModule,

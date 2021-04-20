@@ -2,7 +2,6 @@ import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {ArticleComment} from '../../types/article-comment';
 import {Account} from '../../../../types/account';
 import {CommentsService} from '../../services/comments.service';
-import {NotificationService} from '../../../notification/infrastructure/services/notification.service';
 import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({

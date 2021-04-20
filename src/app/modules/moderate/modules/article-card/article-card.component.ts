@@ -3,9 +3,11 @@ import {Article} from '../../../../types/article';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Location} from '@angular/common';
 import {ArticleService} from '../../../articles/infrastructure/article.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AccountService} from '../../../../infrastructure/services/account.service';
 import {ArticleCardHttpService} from '../../infrastructure/services/article-card-http.service';
+import {NotificationService} from '../../../../components/notification/infrastructure/services/notification.service';
+import {notifyTypes} from '../../../../components/notification/types/notify';
 
 @Component({
   selector: 'app-article-card',
@@ -26,9 +28,11 @@ export class ArticleCardComponent implements OnInit {
 
   constructor(
     private readonly location: Location,
+    private readonly router: Router,
     private readonly articleService: ArticleService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly articleCardHttpService: ArticleCardHttpService,
+    private readonly notificationService: NotificationService,
     public accountService: AccountService,
   ) { }
 
@@ -54,17 +58,22 @@ export class ArticleCardComponent implements OnInit {
 
   public approveArticle(): void {
     this.articleCardHttpService.updateArticleStatus({ id: this.currentArticle.id, status: true }).subscribe(res => {
-      console.log('APPROVE', res)
+      this.notificationService.notify('Статья успешно принята!', 'primary');
+      this.router.navigate(['/', 'moderate', 'articles']);
     });
   }
 
   public warnArticle(): void {
     this.articleCardHttpService.updateArticleStatus({ id: this.currentArticle.id, status: false }).subscribe(res => {
-      console.log('WARN', res)
+      this.notificationService.notify('Статья успешно отправлена на редактирование!', 'warning');
+      this.router.navigate(['/', 'moderate', 'articles']);
     });
   }
 
   public deleteArticle(): void {
-
+    this.articleCardHttpService.deleteArticle(this.currentArticle.id).subscribe(res => {
+      this.notificationService.notify('Статья удалена!', 'error');
+      this.router.navigate(['/', 'moderate', 'articles']);
+    });
   }
 }

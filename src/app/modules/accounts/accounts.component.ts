@@ -10,6 +10,8 @@ import {Tab} from '../../components/tabs-controller/infrastructure/types/tab';
 import {PublicationArticlesTabComponent} from './components/tabs/publication-articles-tab/publication-articles-tab.component';
 import {WaitingModerateArticlesTabComponent} from './components/tabs/waiting-moderate-articles-tab/waiting-moderate-articles-tab.component';
 import {LikesArticlesTabComponent} from './components/tabs/likes-articles-tab/likes-articles-tab.component';
+import {ArticlesToEditComponent} from './components/tabs/articles-to-edit/articles-to-edit.component';
+import {ArticleHttpService} from '../main-page/infrastucture/article-http.service';
 
 const imageAccess = [
   'image/jpg',
@@ -43,6 +45,11 @@ export class AccountsComponent implements OnInit, OnDestroy {
       component: LikesArticlesTabComponent,
       title: 'Понравивившиеся статьи',
     },
+    {
+      component: ArticlesToEditComponent,
+      title: 'Ожидают редактирования',
+      show: 'none',
+    },
   ];
 
   private subs: Subscription = new Subscription();
@@ -53,6 +60,7 @@ export class AccountsComponent implements OnInit, OnDestroy {
     private readonly accountHttp: AccountHttpService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly rolesToNamesService: RolesToNamesService,
+    private readonly articleHttpService: ArticleHttpService,
   ) { }
 
   public ngOnInit(): void {
@@ -92,5 +100,13 @@ export class AccountsComponent implements OnInit, OnDestroy {
         this.tabs[indTab].show = this.currentAccountId === this.accountService.authAccountId ? 'block' : 'none';
       });
     });
+
+    this.articleHttpService.getArticlesByCreater(this.activatedRoute.snapshot.params.id, true, true, false)
+      .subscribe(res => {
+        console.log(res, this.currentAccountId)
+        if (res.length > 0 && res.filter(el => el.authorId === this.accountService.authAccountId).length > 0) {
+          this.tabs.find(el => el.title === 'Ожидают редактирования').show = 'block';
+        }
+      });
   }
 }

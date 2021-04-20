@@ -23,7 +23,7 @@ import { GuardErrorComponent } from './modules/guard-error/guard-error.component
 import {SearchModule} from './modules/search/search.module';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {SearchContentModule} from './components/search-content/search-content.module';
-import {CommentCardModule} from './components/comment-block/components/comment-card/comment-card.module';
+import {ArticleEditorModule} from './modules/article-editor/article-editor.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import {CommentCardModule} from './components/comment-block/components/comment-c
     NotificationModule,
     ArticlesModule,
     ArticleCreaterModule,
+    ArticleEditorModule,
     QuillModule,
     BrowserAnimationsModule,
     CommentBlockModule,
@@ -50,7 +51,6 @@ import {CommentCardModule} from './components/comment-block/components/comment-c
     SearchModule,
     AngularSvgIconModule.forRoot(),
     SearchContentModule,
-    CommentCardModule,
   ],
   providers: [
     {

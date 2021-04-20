@@ -1,10 +1,10 @@
-<h1 style="text-align: center">Написание статьи</h1>
+<h1 style="text-align: center">Редактирование статьи</h1>
 <div class="form">
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
     <h3
       [class.title-error]="formGroup.controls.title.invalid && formGroup.controls.title.touched"
-     >Заголовок для статьи:</h3>
+    >Заголовок для статьи:</h3>
     <input
       formControlName="title"
       class="form__input"
@@ -28,11 +28,11 @@
           style="display: block"
           [disabled]="!currentUser || formGroup.invalid"
           [class.button-disabled]="!currentUser || formGroup.invalid"
-        >Отправить на модерацию123</button>
+        >Отправить на модерацию</button>
         <p class="text" style="margin: 5px 0 0 0; text-align: end;">Автор: {{currentName}}</p>
       </div>
     </div>
   </form>
 
-<!--  TODO ДОБАВИТЬ РЕДАКТИРОВАНИЕ ТЭГОВ-->
+  <!--  TODO ДОБАВИТЬ РЕДАКТИРОВАНИЕ ТЭГОВ-->
 </div>

@@ -23,7 +23,7 @@ export class AdminRootsGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.currentAccount?.roles.includes(Roles.admin) || this.currentAccount?.roles.includes(Roles.moderator)) {
+    if (this.currentAccount?.roles?.includes(Roles.admin) || this.currentAccount?.roles?.includes(Roles.moderator)) {
       return true;
     } else {
       this.router.navigate(['/', 'no-access']);

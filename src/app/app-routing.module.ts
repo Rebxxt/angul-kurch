@@ -9,6 +9,7 @@ import {ArticleCreaterComponent} from './modules/article-creater/article-creater
 import {AdminRootsGuard} from './infrastructure/guards/admin-roots.guard';
 import {GuardErrorComponent} from './modules/guard-error/guard-error.component';
 import {SearchComponent} from './modules/search/search.component';
+import {ArticleEditorComponent} from './modules/article-editor/article-editor.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'article/create',
     component: ArticleCreaterComponent,
+  },
+  {
+    path: 'article/edit/:id',
+    component: ArticleEditorComponent,
   },
   {
     path: 'article/:id',

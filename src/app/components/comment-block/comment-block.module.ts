@@ -6,22 +6,21 @@ import {CommentsService} from './services/comments.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {RatingColorModule} from '../../infrastructure/directives/rating-color.module';
-import { CommentsLvlComponent } from './components/comments-lvl/comments-lvl.component';
+import {CommentsLvlModule} from './components/comments-lvl/comments-lvl.module';
 
 @NgModule({
   declarations: [
     CommentBlockComponent,
-    CommentsLvlComponent,
   ],
   exports: [
     CommentBlockComponent,
-    CommentsLvlComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
     RatingColorModule,
+    CommentsLvlModule,
   ],
   providers: [
     CommentsHttpService,

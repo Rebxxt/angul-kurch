@@ -19,7 +19,6 @@ import {RolesUserDirective} from '../../infrastructure/directives/roles-user.dir
     ArticleCardComponent,
     ArticlePageComponent,
     RolesAdminDirective,
-    RolesUserDirective,
     RolesModerateDirective,
   ],
   imports: [
@@ -31,7 +30,6 @@ import {RolesUserDirective} from '../../infrastructure/directives/roles-user.dir
   ],
   exports: [
     RolesAdminDirective,
-    RolesUserDirective,
     RolesModerateDirective,
   ],
   providers: [
