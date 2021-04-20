@@ -38,7 +38,7 @@
 
 <div style="margin-bottom: 35px;">
   <div class="flex-block">
-    <button class="button-answer" (click)="sendComButton(!comment.sendComm)" *ngIf="currentAccount">Ответить...</button>
+    <button class="button-answer" (click)="sendComButton(!comment.sendComm)" *ngIf="currentAccount" appRolesUser>Ответить...</button>
     <button *ngIf="comment.subCommentsCount > 0" class="button-answer" (click)="comment.displayComm = !comment.displayComm; sendComButton(false)">{{comment.displayComm ? 'Скрыть комментарии...' : 'Посмотреть комментарии ' + comment.subCommentsCount }}</button>
   </div>
 

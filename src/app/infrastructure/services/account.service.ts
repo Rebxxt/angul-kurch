@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Account} from '../../types/account';
-import {Observable, ReplaySubject} from 'rxjs';
+import {BehaviorSubject, Observable, ReplaySubject} from 'rxjs';
 import {NavigationStart, Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {delay, retryWhen, take} from 'rxjs/operators';
@@ -14,7 +14,7 @@ export class AccountService {
 
   public authAccountId: number;
 
-  private _authUser: ReplaySubject<Account> = new ReplaySubject<Account>(1);
+  private _authUser: BehaviorSubject<Account> = new BehaviorSubject<Account>(new Account());
   public get authUser(): Observable<Account> {
     return this._authUser.asObservable();
   }

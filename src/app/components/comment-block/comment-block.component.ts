@@ -96,8 +96,8 @@ export class CommentBlockComponent implements OnInit {
 
   public checkLiked(likedComments: LikedComments[], commentId: number): boolean | undefined {
     const ind = likedComments?.findIndex(el => el.id === commentId);
-    if (ind !== -1) {
-      return likedComments[ind].comment_like;
+    if (ind !== -1 && likedComments) {
+      return likedComments[ind]?.comment_like;
     }
     return;
   }

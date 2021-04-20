@@ -11,6 +11,7 @@ import {RolesAdminDirective} from '../../infrastructure/directives/roles-admin.d
 import {RolesModerateDirective} from '../../infrastructure/directives/roles-moderate.directive';
 import {CommentBlockModule} from '../../components/comment-block/comment-block.module';
 import {RatingColorModule} from '../../infrastructure/directives/rating-color.module';
+import {RolesUserDirective} from '../../infrastructure/directives/roles-user.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {RatingColorModule} from '../../infrastructure/directives/rating-color.mo
     ArticleCardComponent,
     ArticlePageComponent,
     RolesAdminDirective,
+    RolesUserDirective,
     RolesModerateDirective,
   ],
   imports: [
@@ -29,6 +31,7 @@ import {RatingColorModule} from '../../infrastructure/directives/rating-color.mo
   ],
   exports: [
     RolesAdminDirective,
+    RolesUserDirective,
     RolesModerateDirective,
   ],
   providers: [

@@ -23,6 +23,7 @@ import { GuardErrorComponent } from './modules/guard-error/guard-error.component
 import {SearchModule} from './modules/search/search.module';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {SearchContentModule} from './components/search-content/search-content.module';
+import {CommentCardModule} from './components/comment-block/components/comment-card/comment-card.module';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import {SearchContentModule} from './components/search-content/search-content.mo
     SearchModule,
     AngularSvgIconModule.forRoot(),
     SearchContentModule,
-
+    CommentCardModule,
   ],
   providers: [
     {
