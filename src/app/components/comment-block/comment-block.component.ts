@@ -69,8 +69,6 @@ export class CommentBlockComponent implements OnInit {
     });
   }
 
-  public test = this.sendSubComment.bind(this);
-
   public likeComment(commentId: number, like: boolean): void {
     this.commentsService.likeComment({
       comment_id: commentId,
